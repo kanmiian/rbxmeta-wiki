@@ -31,5 +31,19 @@
       "question": "How are units categorized in Anime Crusaders X?",
       "answer": "Units are grouped by placement and role: Hill (elevated/ranged), Ground (lane DPS), Hybrid (flexible placement), and Support (buffs, economy, or time/crowd control)."
     }
-  ]
+  ],
+  "ads": {
+    "enabled": true,
+    "nativeBanner": true,
+    "nativeBannerPages": [
+      "home",
+      "codes",
+      "tier-list",
+      "calculator",
+      "guides",
+      "units"
+    ],
+    "popunder": false,
+    "socialBar": false
+  }
 }
