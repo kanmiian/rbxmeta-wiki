@@ -1,0 +1,61 @@
+{
+  "categories": {
+    "Hill_Hybrid": {
+      "description": "Top Hill & Hybrid units for Progressive and Infinite modes in Anime Crusaders X.",
+      "tiers": {
+        "S+": [
+          { "slug": "goju-vs-sukuno", "name": "Goju vs Sukuno (Heian)", "rarity": "Mythical", "summary": "Premier endgame Hybrid/Hill DPS powerhouse." },
+          { "slug": "gilgamesh", "name": "Gilgamesh (The Golden King)", "rarity": "Mythical", "summary": "Elite Hybrid damage dealer for all modes." },
+          { "slug": "barusu", "name": "Barusu (From Zero)", "rarity": "Mythical", "summary": "Top meta Hill/Hybrid unit in Infinite & Progressive." }
+        ],
+        "S": [
+          { "slug": "ishtall", "name": "Ishtall (Goddess of Heaven)", "rarity": "Mythical", "summary": "Top-tier Hill placement DPS." },
+          { "slug": "einz", "name": "Einz (Sorcerer King)", "rarity": "Mythical", "summary": "High-demand endgame magic DPS." },
+          { "slug": "eskanoor", "name": "Eskanoor", "rarity": "Mythical", "summary": "Strong burst scaling meta unit." }
+        ],
+        "A": [
+          { "slug": "seraph-fallen", "name": "Seraph (Fallen)", "rarity": "Legendary", "summary": "Versatile Hybrid DPS across maps." },
+          { "slug": "shadow-atomic", "name": "Shadow (Atomic)", "rarity": "Legendary", "summary": "Reliable Hybrid AoE unit." },
+          { "slug": "getu", "name": "Getu (Master of Curses)", "rarity": "Legendary", "summary": "Flexible Hybrid damage dealer." }
+        ]
+      }
+    },
+    "Ground": {
+      "description": "Best Ground lane-control DPS units in Anime Crusaders X.",
+      "tiers": {
+        "S+": [
+          { "slug": "mely-assault", "name": "Mely (Assault)", "rarity": "Mythical", "summary": "Top Ground DPS staple in current meta." },
+          { "slug": "higuru", "name": "Higuru (Judgement)", "rarity": "Mythical", "summary": "Elite Ground damage and lane control." }
+        ],
+        "S": [
+          { "slug": "spear", "name": "Spear (Vigorous Warrior)", "rarity": "Mythical", "summary": "High-output Ground carry." },
+          { "slug": "powaa", "name": "Powaa (Blood Queen)", "rarity": "Mythical", "summary": "Strong Ground DPS for wave clearing." },
+          { "slug": "excalibur-unit", "name": "Excalibur (King of Blades)", "rarity": "Mythical", "summary": "Consistent Ground boss killer." }
+        ],
+        "A": [
+          { "slug": "sun-woo", "name": "Sun Woo (System)", "rarity": "Legendary", "summary": "Solid Ground DPS for mid-to-late stages." },
+          { "slug": "ant-king", "name": "Ant King (Shadow Fang)", "rarity": "Legendary", "summary": "Fast Ground melee lane clearer." },
+          { "slug": "ryoma", "name": "Ryoma (Sword God)", "rarity": "Legendary", "summary": "Reliable Ground swordsman." }
+        ]
+      }
+    },
+    "Support": {
+      "description": "Essential Support units for buffs, economy, and crowd control.",
+      "tiers": {
+        "S+": [
+          { "slug": "kurimi", "name": "Kurimi (Time Queen)", "rarity": "Mythical", "summary": "Top Support with time-manipulation control." },
+          { "slug": "ai-idol", "name": "AI (Idol)", "rarity": "Mythical", "summary": "Meta buffer for team DPS amplification." },
+          { "slug": "zero-emperor", "name": "Zero (True Emperor)", "rarity": "Mythical", "summary": "Premier tactical Support unit." }
+        ],
+        "S": [
+          { "slug": "mr-champion", "name": "Mr. Champion", "rarity": "Mythical", "summary": "High-value utility and support staple." }
+        ],
+        "A": [
+          { "slug": "alfonz", "name": "Alfonz (Kind Heart)", "rarity": "Legendary", "summary": "Standard early-to-mid Support." },
+          { "slug": "shunks", "name": "Shunks (Haki)", "rarity": "Legendary", "summary": "Useful Haki buff/utility Support." },
+          { "slug": "bones-guitarist", "name": "Bones (Soul Guitarist)", "rarity": "Legendary", "summary": "Solid Support for team comps." }
+        ]
+      }
+    }
+  }
+}

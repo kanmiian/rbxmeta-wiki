@@ -1,0 +1,70 @@
+[
+  {
+    "code": "ACBESTTD2026",
+    "reward": "50 Stat Cubes, 50 Relic Cubes, 50 Curse Tokens & 5,000 Gems",
+    "status": "Active",
+    "verification": "Verified (Media Consensus)",
+    "firstSeen": "2026-11-16",
+    "lastVerified": "2026-11-17",
+    "method": "Cross-checked: IGN, Beebom, Eurogamer",
+    "levelReq": "None (32x Group + Favorite)",
+    "source": "IGN / Beebom / Eurogamer",
+    "isNew": true
+  },
+  {
+    "code": "THANKYOUFOR30KMAJORFIXES",
+    "reward": "50 Trait Remnants & 1,000 Gems",
+    "status": "Active",
+    "verification": "Unverified (Mixed Reports)",
+    "firstSeen": "2026-11-16",
+    "lastVerified": "2026-11-17",
+    "method": "Listed by Beebom; flagged Unverified by RBLXSTAT",
+    "levelReq": "None (32x Group + Favorite)",
+    "source": "Beebom / RBLXSTAT",
+    "isNew": true
+  },
+  {
+    "code": "WELCOMETOACX",
+    "reward": "200 Trait Remnants & 5,000 Gems",
+    "status": "Active",
+    "verification": "Verified (Media Consensus)",
+    "firstSeen": "2026-11-15",
+    "lastVerified": "2026-11-17",
+    "method": "Cross-checked: IGN, Beebom, Eurogamer",
+    "levelReq": "None (32x Group + Favorite)",
+    "source": "IGN / Beebom"
+  },
+  {
+    "code": "SORRYFORSHUTDOWNEA2026",
+    "reward": "50 Trait Remnants",
+    "status": "Active",
+    "verification": "Verified (Media Consensus)",
+    "firstSeen": "2026-11-15",
+    "lastVerified": "2026-11-17",
+    "method": "Cross-checked: IGN, Beebom",
+    "levelReq": "None (32x Group + Favorite)",
+    "source": "IGN / Beebom"
+  },
+  {
+    "code": "ACCOMEBACK",
+    "reward": "200 Trait Remnants",
+    "status": "Active",
+    "verification": "Verified (Level-Gated)",
+    "firstSeen": "2026-11-15",
+    "lastVerified": "2026-11-17",
+    "method": "Cross-checked: IGN, Beebom",
+    "levelReq": "Level 20+",
+    "source": "IGN / Beebom"
+  },
+  {
+    "code": "ANNIVERSARY",
+    "reward": "100 Trait Remnants",
+    "status": "Active",
+    "verification": "Verified (Level-Gated)",
+    "firstSeen": "2026-11-15",
+    "lastVerified": "2026-11-17",
+    "method": "Cross-checked: IGN, Beebom",
+    "levelReq": "Level 10+",
+    "source": "IGN / Beebom"
+  }
+]

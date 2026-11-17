@@ -1,0 +1,6 @@
+dist/
+__pycache__/
+*.pyc
+.wrangler/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,35 @@
+{
+  "site": {
+    "gameId": "anime-crusaders-x",
+    "cfPagesProject": "animecrusaderswiki",
+    "name": "Anime Crusaders X",
+    "domain": "https://rbxmeta.wiki",
+    "title": "Anime Crusaders X Tools & Wiki | Tier List, Units & Team Builder",
+    "description": "Explore Anime Crusaders X with our latest tier list, unit database, character rankings, team builder, and unit comparison tools. Find the best units and build your ultimate team!",
+    "themeColor": "#8b5cf6",
+    "accentColor": "#a78bfa",
+    "social": {
+      "roblox": "https://www.roblox.com/",
+      "discord": "",
+      "trello": ""
+    }
+  },
+  "faqs": [
+    {
+      "question": "What are the latest active codes in Anime Crusaders X?",
+      "answer": "Active codes include ACBESTTD2026 (50 Stat Cubes, 50 Relic Cubes, 50 Curse Tokens, 5,000 Gems), THANKYOUFOR30KMAJORFIXES (50 Trait Remnants, 1,000 Gems), WELCOMETOACX (200 Trait Remnants, 5,000 Gems), SORRYFORSHUTDOWNEA2026 (50 Trait Remnants), ACCOMEBACK (200 Trait Remnants, Lv. 20+), and ANNIVERSARY (100 Trait Remnants, Lv. 10+)."
+    },
+    {
+      "question": "How do you redeem codes in Anime Crusaders X?",
+      "answer": "Join the official 32x Roblox group and favorite the game, launch Anime Crusaders X, walk into the green circle 'Codes' zone in the lobby, paste an active code, and click Redeem."
+    },
+    {
+      "question": "Who are the best meta units in the Anime Crusaders X Tier List?",
+      "answer": "Top meta units include Goju vs Sukuno (Heian), Gilgamesh (The Golden King), Barusu (From Zero), Ishtall (Goddess of Heaven), Kurimi (Time Queen), Einz (Sorcerer King), and Eskanoor."
+    },
+    {
+      "question": "How are units categorized in Anime Crusaders X?",
+      "answer": "Units are grouped by placement and role: Hill (elevated/ranged), Ground (lane DPS), Hybrid (flexible placement), and Support (buffs, economy, or time/crowd control)."
+    }
+  ]
+}

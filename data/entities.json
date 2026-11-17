@@ -1,0 +1,818 @@
+[
+  {
+    "slug": "goju-vs-sukuno",
+    "name": "Goju vs Sukuno (Heian)",
+    "type": "Hill / Hybrid",
+    "rarity": "Mythical",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "S+",
+    "description": "Goju vs Sukuno (Heian) is a S+-Tier Mythical Hill / Hybrid unit in Anime Crusaders X. Premier endgame Hybrid/Hill DPS powerhouse.",
+    "stats": {
+      "Tier Ranking": "S+",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Premier endgame Hybrid/Hill DPS powerhouse.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Goju vs Sukuno (Heian) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "gilgamesh",
+    "name": "Gilgamesh (The Golden King)",
+    "type": "Hill / Hybrid",
+    "rarity": "Mythical",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "S+",
+    "description": "Gilgamesh (The Golden King) is a S+-Tier Mythical Hill / Hybrid unit in Anime Crusaders X. Elite Hybrid damage dealer for all modes.",
+    "stats": {
+      "Tier Ranking": "S+",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Elite Hybrid damage dealer for all modes.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Gilgamesh (The Golden King) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "barusu",
+    "name": "Barusu (From Zero)",
+    "type": "Hill / Hybrid",
+    "rarity": "Mythical",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "S+",
+    "description": "Barusu (From Zero) is a S+-Tier Mythical Hill / Hybrid unit in Anime Crusaders X. Top meta Hill/Hybrid unit in Infinite & Progressive.",
+    "stats": {
+      "Tier Ranking": "S+",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Top meta Hill/Hybrid unit in Infinite & Progressive.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Barusu (From Zero) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "ishtall",
+    "name": "Ishtall (Goddess of Heaven)",
+    "type": "Hill / Hybrid",
+    "rarity": "Mythical",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "S",
+    "description": "Ishtall (Goddess of Heaven) is a S-Tier Mythical Hill / Hybrid unit in Anime Crusaders X. Top-tier Hill placement DPS.",
+    "stats": {
+      "Tier Ranking": "S",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Top-tier Hill placement DPS.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Ishtall (Goddess of Heaven) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "einz",
+    "name": "Einz (Sorcerer King)",
+    "type": "Hill / Hybrid",
+    "rarity": "Mythical",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "S",
+    "description": "Einz (Sorcerer King) is a S-Tier Mythical Hill / Hybrid unit in Anime Crusaders X. High-demand endgame magic DPS.",
+    "stats": {
+      "Tier Ranking": "S",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "High-demand endgame magic DPS.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Einz (Sorcerer King) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "eskanoor",
+    "name": "Eskanoor",
+    "type": "Hill / Hybrid",
+    "rarity": "Mythical",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "S",
+    "description": "Eskanoor is a S-Tier Mythical Hill / Hybrid unit in Anime Crusaders X. Strong burst scaling meta unit.",
+    "stats": {
+      "Tier Ranking": "S",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Strong burst scaling meta unit.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Eskanoor with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "seraph-fallen",
+    "name": "Seraph (Fallen)",
+    "type": "Hill / Hybrid",
+    "rarity": "Legendary",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "A",
+    "description": "Seraph (Fallen) is a A-Tier Legendary Hill / Hybrid unit in Anime Crusaders X. Versatile Hybrid DPS across maps.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Versatile Hybrid DPS across maps.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Seraph (Fallen) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "shadow-atomic",
+    "name": "Shadow (Atomic)",
+    "type": "Hill / Hybrid",
+    "rarity": "Legendary",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "A",
+    "description": "Shadow (Atomic) is a A-Tier Legendary Hill / Hybrid unit in Anime Crusaders X. Reliable Hybrid AoE unit.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Reliable Hybrid AoE unit.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Shadow (Atomic) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "getu",
+    "name": "Getu (Master of Curses)",
+    "type": "Hill / Hybrid",
+    "rarity": "Legendary",
+    "rollChance": "Hill / Hybrid Placement",
+    "tier": "A",
+    "description": "Getu (Master of Curses) is a A-Tier Legendary Hill / Hybrid unit in Anime Crusaders X. Flexible Hybrid damage dealer.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Hill / Hybrid",
+      "Role": "Main DPS",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Flexible Hybrid damage dealer.",
+      "Strong Hill / Hybrid coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Getu (Master of Curses) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "mely-assault",
+    "name": "Mely (Assault)",
+    "type": "Ground",
+    "rarity": "Mythical",
+    "rollChance": "Ground Placement",
+    "tier": "S+",
+    "description": "Mely (Assault) is a S+-Tier Mythical Ground unit in Anime Crusaders X. Top Ground DPS staple in current meta.",
+    "stats": {
+      "Tier Ranking": "S+",
+      "Placement": "Ground",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Top Ground DPS staple in current meta.",
+      "Strong Ground coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Mely (Assault) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "higuru",
+    "name": "Higuru (Judgement)",
+    "type": "Ground",
+    "rarity": "Mythical",
+    "rollChance": "Ground Placement",
+    "tier": "S+",
+    "description": "Higuru (Judgement) is a S+-Tier Mythical Ground unit in Anime Crusaders X. Elite Ground damage and lane control.",
+    "stats": {
+      "Tier Ranking": "S+",
+      "Placement": "Ground",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Elite Ground damage and lane control.",
+      "Strong Ground coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Higuru (Judgement) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "spear",
+    "name": "Spear (Vigorous Warrior)",
+    "type": "Ground",
+    "rarity": "Mythical",
+    "rollChance": "Ground Placement",
+    "tier": "S",
+    "description": "Spear (Vigorous Warrior) is a S-Tier Mythical Ground unit in Anime Crusaders X. High-output Ground carry.",
+    "stats": {
+      "Tier Ranking": "S",
+      "Placement": "Ground",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "High-output Ground carry.",
+      "Strong Ground coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Spear (Vigorous Warrior) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "powaa",
+    "name": "Powaa (Blood Queen)",
+    "type": "Ground",
+    "rarity": "Mythical",
+    "rollChance": "Ground Placement",
+    "tier": "S",
+    "description": "Powaa (Blood Queen) is a S-Tier Mythical Ground unit in Anime Crusaders X. Strong Ground DPS for wave clearing.",
+    "stats": {
+      "Tier Ranking": "S",
+      "Placement": "Ground",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Strong Ground DPS for wave clearing.",
+      "Strong Ground coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Powaa (Blood Queen) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "excalibur-unit",
+    "name": "Excalibur (King of Blades)",
+    "type": "Ground",
+    "rarity": "Mythical",
+    "rollChance": "Ground Placement",
+    "tier": "S",
+    "description": "Excalibur (King of Blades) is a S-Tier Mythical Ground unit in Anime Crusaders X. Consistent Ground boss killer.",
+    "stats": {
+      "Tier Ranking": "S",
+      "Placement": "Ground",
+      "Role": "Main DPS",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Consistent Ground boss killer.",
+      "Strong Ground coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Excalibur (King of Blades) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "sun-woo",
+    "name": "Sun Woo (System)",
+    "type": "Ground",
+    "rarity": "Legendary",
+    "rollChance": "Ground Placement",
+    "tier": "A",
+    "description": "Sun Woo (System) is a A-Tier Legendary Ground unit in Anime Crusaders X. Solid Ground DPS for mid-to-late stages.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Ground",
+      "Role": "Main DPS",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Solid Ground DPS for mid-to-late stages.",
+      "Strong Ground coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Sun Woo (System) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "ant-king",
+    "name": "Ant King (Shadow Fang)",
+    "type": "Ground",
+    "rarity": "Legendary",
+    "rollChance": "Ground Placement",
+    "tier": "A",
+    "description": "Ant King (Shadow Fang) is a A-Tier Legendary Ground unit in Anime Crusaders X. Fast Ground melee lane clearer.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Ground",
+      "Role": "Main DPS",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Fast Ground melee lane clearer.",
+      "Strong Ground coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Ant King (Shadow Fang) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "ryoma",
+    "name": "Ryoma (Sword God)",
+    "type": "Ground",
+    "rarity": "Legendary",
+    "rollChance": "Ground Placement",
+    "tier": "A",
+    "description": "Ryoma (Sword God) is a A-Tier Legendary Ground unit in Anime Crusaders X. Reliable Ground swordsman.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Ground",
+      "Role": "Main DPS",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Damage / Range / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Reliable Ground swordsman.",
+      "Strong Ground coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Ryoma (Sword God) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Main DPS",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Damage / Range / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "kurimi",
+    "name": "Kurimi (Time Queen)",
+    "type": "Support",
+    "rarity": "Mythical",
+    "rollChance": "Support Placement",
+    "tier": "S+",
+    "description": "Kurimi (Time Queen) is a S+-Tier Mythical Support unit in Anime Crusaders X. Top Support with time-manipulation control.",
+    "stats": {
+      "Tier Ranking": "S+",
+      "Placement": "Support",
+      "Role": "Support / Buffer",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Range / Cost Reduction / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Top Support with time-manipulation control.",
+      "Strong Support coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Kurimi (Time Queen) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Support / Buffer",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Range / Cost Reduction / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "ai-idol",
+    "name": "AI (Idol)",
+    "type": "Support",
+    "rarity": "Mythical",
+    "rollChance": "Support Placement",
+    "tier": "S+",
+    "description": "AI (Idol) is a S+-Tier Mythical Support unit in Anime Crusaders X. Meta buffer for team DPS amplification.",
+    "stats": {
+      "Tier Ranking": "S+",
+      "Placement": "Support",
+      "Role": "Support / Buffer",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Range / Cost Reduction / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Meta buffer for team DPS amplification.",
+      "Strong Support coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair AI (Idol) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Support / Buffer",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Range / Cost Reduction / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "zero-emperor",
+    "name": "Zero (True Emperor)",
+    "type": "Support",
+    "rarity": "Mythical",
+    "rollChance": "Support Placement",
+    "tier": "S+",
+    "description": "Zero (True Emperor) is a S+-Tier Mythical Support unit in Anime Crusaders X. Premier tactical Support unit.",
+    "stats": {
+      "Tier Ranking": "S+",
+      "Placement": "Support",
+      "Role": "Support / Buffer",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Range / Cost Reduction / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Premier tactical Support unit.",
+      "Strong Support coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Zero (True Emperor) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Support / Buffer",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Range / Cost Reduction / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "mr-champion",
+    "name": "Mr. Champion",
+    "type": "Support",
+    "rarity": "Mythical",
+    "rollChance": "Support Placement",
+    "tier": "S",
+    "description": "Mr. Champion is a S-Tier Mythical Support unit in Anime Crusaders X. High-value utility and support staple.",
+    "stats": {
+      "Tier Ranking": "S",
+      "Placement": "Support",
+      "Role": "Support / Buffer",
+      "Best Game Mode": "Infinite & Progressive",
+      "Evolution": "Evolution Recommended for Endgame",
+      "Recommended Traits": "Range / Cost Reduction / Cooldown",
+      "Rarity": "Mythical",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "High-value utility and support staple.",
+      "Strong Support coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Mr. Champion with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Support / Buffer",
+    "gameMode": "Infinite & Progressive",
+    "evolution": "Evolution Recommended for Endgame",
+    "traits": "Range / Cost Reduction / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "alfonz",
+    "name": "Alfonz (Kind Heart)",
+    "type": "Support",
+    "rarity": "Legendary",
+    "rollChance": "Support Placement",
+    "tier": "A",
+    "description": "Alfonz (Kind Heart) is a A-Tier Legendary Support unit in Anime Crusaders X. Standard early-to-mid Support.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Support",
+      "Role": "Support / Buffer",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Range / Cost Reduction / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Standard early-to-mid Support.",
+      "Strong Support coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Alfonz (Kind Heart) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Support / Buffer",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Range / Cost Reduction / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "shunks",
+    "name": "Shunks (Haki)",
+    "type": "Support",
+    "rarity": "Legendary",
+    "rollChance": "Support Placement",
+    "tier": "A",
+    "description": "Shunks (Haki) is a A-Tier Legendary Support unit in Anime Crusaders X. Useful Haki buff/utility Support.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Support",
+      "Role": "Support / Buffer",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Range / Cost Reduction / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Useful Haki buff/utility Support.",
+      "Strong Support coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Shunks (Haki) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Support / Buffer",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Range / Cost Reduction / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  },
+  {
+    "slug": "bones-guitarist",
+    "name": "Bones (Soul Guitarist)",
+    "type": "Support",
+    "rarity": "Legendary",
+    "rollChance": "Support Placement",
+    "tier": "A",
+    "description": "Bones (Soul Guitarist) is a A-Tier Legendary Support unit in Anime Crusaders X. Solid Support for team comps.",
+    "stats": {
+      "Tier Ranking": "A",
+      "Placement": "Support",
+      "Role": "Support / Buffer",
+      "Best Game Mode": "Story & Progressive",
+      "Evolution": "Usable Base / Evolvable",
+      "Recommended Traits": "Range / Cost Reduction / Cooldown",
+      "Rarity": "Legendary",
+      "Last Updated": "2026-11-17"
+    },
+    "pros": [
+      "Solid Support for team comps.",
+      "Strong Support coverage in meta lineups"
+    ],
+    "cons": [
+      "Requires Trait Remnants & Cubes to optimize endgame traits"
+    ],
+    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
+    "bestBuild": "Pair Bones (Soul Guitarist) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "role": "Support / Buffer",
+    "gameMode": "Story & Progressive",
+    "evolution": "Usable Base / Evolvable",
+    "traits": "Range / Cost Reduction / Cooldown",
+    "lastTested": "2026-11-17 (Media Consensus)",
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+  }
+]
