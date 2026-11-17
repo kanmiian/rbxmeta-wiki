@@ -568,6 +568,8 @@ class WikiBuilder:
         indexnow_key = "d9fff1aa6c384251b984519c49ed6831"
         with open(os.path.join(self.dist_dir, f'{indexnow_key}.txt'), 'w', encoding='utf-8') as f:
             f.write(indexnow_key)
+        with open(os.path.join(self.dist_dir, 'BingSiteAuth.xml'), 'w', encoding='utf-8') as f:
+            f.write('<?xml version="1.0"?>\n<users>\n\t<user>5A5AB05B40BF829D89012A846FF57A00</user>\n</users>\n')
 
     def build_all(self):
         if os.path.exists(self.dist_dir):
