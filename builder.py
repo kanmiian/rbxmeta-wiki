@@ -11,13 +11,12 @@ class WikiBuilder:
         self.config = self.load_json('config.json')
         self.codes = self.load_json('data/codes.json')
         self.entities = self.load_json('data/entities.json')
-        self.tierlist_data = self.load_json('data/tierlist.json')
         self.guides = self.load_json('data/guides.json')
 
     def load_json(self, rel_path):
         path = os.path.join(self.root_dir, rel_path)
         if not os.path.exists(path):
-            return {} if rel_path.endswith('config.json') or rel_path.endswith('tierlist.json') else []
+            return {} if rel_path.endswith('config.json') else []
         with open(path, 'r', encoding='utf-8') as f:
             return json.load(f)
 
@@ -193,17 +192,20 @@ class WikiBuilder:
         elements = [{"@type": "ListItem", "position": idx, "name": name, "item": f"{domain}{path}"} for idx, (name, path) in enumerate(items, 1)]
         return f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": elements})}</script>'
 
-    def render_schema_article(self, headline, description, path, date_modified=None):
+    def render_schema_article(self, headline, description, path, date_modified=None, schema_type="WebPage"):
+        """Render page metadata without inventing a publication date."""
         domain = self.config['site']['domain'].rstrip('/')
-        mod = date_modified or datetime.now().strftime('%Y-%m-%d')
         data = {
-            "@context": "https://schema.org", "@type": "Article", "headline": headline, "description": description,
+            "@context": "https://schema.org", "@type": schema_type,
+            "name" if schema_type == "WebPage" else "headline": headline,
+            "description": description,
             "image": [f"{domain}/assets/images/favicon-192x192.png"],
-            "datePublished": "2026-11-17", "dateModified": mod,
             "mainEntityOfPage": {"@type": "WebPage", "@id": f"{domain}{path}"},
             "author": {"@type": "Organization", "name": "RBXMeta", "url": domain},
             "publisher": {"@type": "Organization", "name": "RBXMeta", "logo": {"@type": "ImageObject", "url": f"{domain}/assets/images/favicon-192x192.png"}}
         }
+        if date_modified:
+            data["dateModified"] = date_modified
         return f'<script type="application/ld+json">{json.dumps(data)}</script>'
 
     def render_schema_faq(self, faqs):
@@ -224,46 +226,48 @@ class WikiBuilder:
     def render_pity_calculator(self):
         return """
         <div class="calc-box">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem;">
-                <div class="calc-input-group" style="margin-bottom: 0;">
-                    <label class="calc-label">Mythic Pity Pulls (0–200):</label>
-                    <input type="number" id="acx-pity-mythic" class="calc-input" value="40" min="0" max="200">
-                </div>
-                <div class="calc-input-group" style="margin-bottom: 0;">
-                    <label class="calc-label">Secret Pity Pulls (0–2,000):</label>
-                    <input type="number" id="acx-pity-secret" class="calc-input" value="120" min="0" max="2000">
-                </div>
-                <div class="calc-input-group" style="margin-bottom: 0;">
-                    <label class="calc-label">Current Gems:</label>
-                    <input type="number" id="acx-gems" class="calc-input" value="5000" min="0" max="500000">
-                </div>
-                <div class="calc-input-group" style="margin-bottom: 0;">
-                    <label class="calc-label">Gems per Summon:</label>
-                    <select id="acx-cost" class="calc-select">
-                        <option value="50">50 Gems (Standard Banner)</option>
-                        <option value="500">500 Gems (10x Multi-Pull)</option>
-                    </select>
-                </div>
+            <p style="color:var(--text-muted);margin-bottom:1rem;">Choose one banner at a time. Gems are applied only to the selected pity counter; this tool does not assume Mythic and Secret counters share progress.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;">
+                <div class="calc-input-group"><label class="calc-label" for="acx-banner">Banner:</label><select id="acx-banner" class="calc-select"><option value="mythic">Mythic (200 pity)</option><option value="secret">Secret / Crusader (2,000 pity)</option></select></div>
+                <div class="calc-input-group"><label class="calc-label" for="acx-pity-current">Current pulls toward selected pity:</label><input type="number" id="acx-pity-current" class="calc-input" value="40" min="0" step="1"></div>
+                <div class="calc-input-group"><label class="calc-label" for="acx-gems">Current Gems:</label><input type="number" id="acx-gems" class="calc-input" value="5000" min="0" step="1"></div>
+                <div class="calc-input-group"><label class="calc-label" for="acx-cost">Gems per summon:</label><select id="acx-cost" class="calc-select"><option value="50">50 Gems (single summon)</option><option value="500">500 Gems (10x summon)</option></select></div>
             </div>
-            <button class="calc-btn" style="margin-top: 1rem;" onclick="calcAcxPity()">Calculate Mythic (200) &amp; Secret (2,000) Pity</button>
-            <div id="acx-pity-res" class="calc-result" style="display: none;"></div>
+            <button class="calc-btn" style="margin-top:1rem;" onclick="calcAcxPity()">Calculate selected banner</button>
+            <div id="acx-pity-res" class="calc-result" style="display:none;" aria-live="polite"></div>
         </div>
         <script>
         function calcAcxPity() {
-            const curM = Math.max(0, Math.min(200, parseInt(document.getElementById('acx-pity-mythic').value) || 0));
-            const curS = Math.max(0, Math.min(2000, parseInt(document.getElementById('acx-pity-secret').value) || 0));
-            const gems = Math.max(0, parseInt(document.getElementById('acx-gems').value) || 0);
-            const costSel = parseInt(document.getElementById('acx-cost').value) || 50;
-            const perPull = (costSel === 500) ? 50 : costSel;
-            const pullsFromGems = Math.floor(gems / perPull);
-            const mythicLeft = Math.max(0, 200 - (curM + pullsFromGems));
-            const secretLeft = Math.max(0, 2000 - (curS + pullsFromGems));
-            const pMythic = pullsFromGems === 0 ? '0.00' : ((1 - Math.pow(1 - 0.005, pullsFromGems)) * 100).toFixed(2);
+            const banner = document.getElementById('acx-banner').value;
+            const currentRaw = document.getElementById('acx-pity-current').value;
+            const gemsRaw = document.getElementById('acx-gems').value;
+            const current = Number(currentRaw);
+            const gems = Number(gemsRaw);
+            const perPull = Number(document.getElementById('acx-cost').value);
             const el = document.getElementById('acx-pity-res');
+            if (currentRaw === '' || gemsRaw === '' || !Number.isInteger(current) || !Number.isInteger(gems) || current < 0 || gems < 0) {
+                el.style.display = 'block';
+                el.textContent = 'Enter non-negative whole numbers for current pulls and Gems.';
+                return;
+            }
+            const threshold = banner === 'mythic' ? 200 : 2000;
+            const rate = banner === 'mythic' ? 0.005 : 0.0005;
+            if (current > threshold) {
+                el.style.display = 'block';
+                el.textContent = 'Current pulls cannot exceed the selected pity threshold (' + threshold.toLocaleString() + ').';
+                return;
+            }
+            const pullsFromGems = Math.floor(gems / perPull);
+            const remaining = Math.max(0, threshold - current);
+            const pullsToPityAfterGems = Math.max(0, remaining - pullsFromGems);
+            const rawChance = pullsFromGems === 0 ? 0 : (1 - Math.pow(1 - rate, pullsFromGems)) * 100;
             el.style.display = 'block';
-            el.innerHTML = '<div><strong>Pulls From Current Gems:</strong> <span style="color:var(--accent);font-weight:800;">' + pullsFromGems + '</span> (rounded down at ' + perPull + ' Gems/pull)</div>' +
-                '<div style="margin-top:0.35rem;"><strong>Mythic Pity (0.5% / 200 pulls):</strong> ' + (mythicLeft === 0 ? '<span style="color:#34d399;font-weight:800;">GUARANTEED!</span>' : mythicLeft + ' pulls left (' + (mythicLeft * perPull).toLocaleString() + ' Gems) — ' + pMythic + '% raw hit chance') + '</div>' +
-                '<div style="margin-top:0.35rem;"><strong>Secret / Crusader Pity (0.05% / 2,000 pulls):</strong> ' + (secretLeft === 0 ? '<span style="color:#34d399;font-weight:800;">GUARANTEED!</span>' : secretLeft + ' pulls left (' + (secretLeft * perPull).toLocaleString() + ' Gems)') + '</div>';
+            el.innerHTML = '<div><strong>Selected banner:</strong> ' + (banner === 'mythic' ? 'Mythic' : 'Secret / Crusader') + '</div>' +
+                '<div><strong>Summons from Gems:</strong> ' + pullsFromGems.toLocaleString() + ' (' + (pullsFromGems * perPull).toLocaleString() + ' Gems used)</div>' +
+                '<div><strong>Pulls remaining before this budget:</strong> ' + remaining.toLocaleString() + '</div>' +
+                '<div><strong>Pulls still needed after this budget to reach listed pity:</strong> ' + pullsToPityAfterGems.toLocaleString() + (pullsToPityAfterGems === 0 ? (remaining === 0 ? ' — current counter is already at the listed threshold.' : ' — listed pity is reached within this Gem budget.') : '') + '</div>' +
+                '<div><strong>Raw-rate chance over these summons:</strong> ' + rawChance.toFixed(2) + '%</div>' +
+                '<p style="color:var(--text-muted);margin-top:.6rem;font-size:.85rem;">Raw-rate chance assumes independent rolls at a constant listed rate and excludes any pity-rate changes. Pity thresholds and rates must be checked against the current in-game banner.</p>';
         }
         </script>
         """
@@ -346,31 +350,32 @@ class WikiBuilder:
             f.write(html)
 
     def build_codes(self):
-        active = [c for c in self.codes if c["status"] == "Active"]
-        rows = ""
-        for c in active:
-            v_status = c.get("verification", "Verified")
-            v_color = "#34d399" if "Verified" in v_status else "#fbbf24"
-            rows += f"""
-            <div class="code-row" style="flex-direction: column; align-items: stretch; gap: 0.6rem;">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-                    <div>
-                        <span class="code-val">{c['code']}</span>
-                        <span class="code-reward">({c['reward']})</span>
-                        <span style="display:inline-block;margin-left:0.5rem;font-size:0.74rem;font-weight:800;padding:0.15rem 0.5rem;border-radius:0.35rem;border:1px solid {v_color};color:{v_color};">{v_status}</span>
-                    </div>
+        active = [c for c in self.codes if c.get("status", "").lower() == "active"]
+        confirmed = [c for c in active if "unverified" not in c.get("verification", "").lower()]
+        unverified = [c for c in active if "unverified" in c.get("verification", "").lower()]
+
+        def render_code(c, is_unverified=False):
+            v_status = c.get("verification", "Verification pending")
+            v_color = "#fbbf24" if is_unverified else "#34d399"
+            warning = '<p style="color:#fbbf24;font-size:.85rem;margin-top:.4rem;">Reports conflict; redemption is not confirmed. Try at your own discretion.</p>' if is_unverified else ""
+            return f"""<div class="code-row" style="flex-direction:column;align-items:stretch;gap:.6rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+                    <div><span class="code-val">{c['code']}</span><span class="code-reward">({c['reward']})</span>
+                    <span style="display:inline-block;margin-left:.5rem;font-size:.74rem;font-weight:800;padding:.15rem .5rem;border-radius:.35rem;border:1px solid {v_color};color:{v_color};">{v_status}</span></div>
                     <button class="btn-copy" onclick="copyCode(this, '{c['code']}')">COPY CODE</button>
                 </div>
-                <div style="font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <span><strong>Level Req:</strong> {c.get('levelReq', 'None')}</span>
+                <div style="font-size:.82rem;color:var(--text-muted);display:flex;gap:1rem;flex-wrap:wrap;">
+                    <span><strong>Level Req:</strong> {c.get('levelReq', 'Not specified')}</span>
                     <span><strong>First Seen:</strong> {c.get('firstSeen', c.get('addedDate', ''))}</span>
-                    <span><strong>Last Checked:</strong> {c.get('lastVerified', '')}</span>
+                    <span><strong>Last Checked:</strong> {c.get('lastVerified', 'Not recorded')}</span>
                     <span><strong>Source:</strong> {c.get('method', c.get('source', 'Community'))}</span>
-                </div>
-            </div>
-            """
-        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Codes | Latest Working Codes & Verification Log", f"All working {self.config['site']['name']} Roblox codes with per-code verification status, level requirements, and sources.", "/codes")}{self.render_hreflang("codes")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Codes", "/codes")])}{self.render_schema_article(f"{self.config['site']['name']} Codes", "Active codes with individual verification status and lobby redemption guide.", "/codes")}</head><body>{self.render_nav("codes")}
-        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Codes</span></div><div class="card">{self.render_lang_switcher("codes", "en")}<div class="badge-verified" style="margin-bottom:0.75rem;">✓ PER-CODE VERIFICATION • UPDATED {datetime.now().strftime('%Y-%m-%d')}</div><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:0.75rem;">{self.config['site']['name']} Codes</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Each code is tracked individually with its verification status, level requirement, first-seen date, and source. See our <a href="/editorial-policy" style="color:var(--accent);">Editorial Policy</a> for how we distinguish <strong>Verified</strong> vs <strong>Unverified</strong> codes.</p>{rows}<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);"><h2 style="font-size:1.3rem;margin-bottom:0.75rem;">How to Redeem Codes in {self.config['site']['name']}</h2><ol style="margin-left:1.5rem;color:#cbd5e1;line-height:1.9;"><li>Join the official <strong>32x</strong> Roblox group and favorite the game.</li><li>Launch <strong>{self.config['site']['name']}</strong> and enter the green <strong>Codes</strong> circle in the lobby.</li><li>Paste an active code and click <strong>Redeem</strong> (note level requirements for <code>ACCOMEBACK</code> Lv.20+ and <code>ANNIVERSARY</code> Lv.10+).</li></ol></div></div></main>{self.render_footer()}</body></html>"""
+                </div>{warning}
+            </div>"""
+
+        rows = "".join(render_code(c) for c in confirmed)
+        unverified_rows = "".join(render_code(c, True) for c in unverified)
+        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Codes | Confirmed & Reported Codes", f"Anime Crusaders X codes separated by cross-source confirmed and unverified reports, with requirements and sources.", "/codes")}{self.render_hreflang("codes")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Codes", "/codes")])}</head><body>{self.render_nav("codes")}
+        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Codes</span></div><div class="card">{self.render_lang_switcher("codes", "en")}<div class="badge-verified" style="margin-bottom:.75rem;">CODE STATUS • UPDATED {datetime.now().strftime('%Y-%m-%d')}</div><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:.75rem;">{self.config['site']['name']} Codes</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Confirmed codes are listed separately from codes with mixed or unverified reports. Cross-source confirmation does not mean we personally redeemed the code in-game.</p><h2 style="font-size:1.3rem;margin:1rem 0;">Cross-source Confirmed ({len(confirmed)})</h2>{rows or '<p>No confirmed active codes are currently listed.</p>'}{'<h2 style="font-size:1.3rem;margin:2rem 0 1rem;color:#fbbf24;">Reported — Unverified (' + str(len(unverified)) + ')</h2>' + unverified_rows if unverified else ''}<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);"><h2 style="font-size:1.3rem;margin-bottom:.75rem;">How to Redeem Codes in {self.config['site']['name']}</h2><ol style="margin-left:1.5rem;color:#cbd5e1;line-height:1.9;"><li>Join the official <strong>32x</strong> Roblox group and favorite the game.</li><li>Launch <strong>{self.config['site']['name']}</strong> and enter the green <strong>Codes</strong> circle in the lobby.</li><li>Paste a code and click <strong>Redeem</strong>. Check any level requirements shown above.</li></ol></div></div></main>{self.render_footer()}</body></html>"""
         with open(os.path.join(self.dist_dir, 'codes.html'), 'w', encoding='utf-8') as f:
             f.write(html)
 
@@ -409,58 +414,55 @@ class WikiBuilder:
 
     def build_team_builder(self):
         schema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": f"{self.config['site']['name']} Team Builder", "operatingSystem": "Web", "applicationCategory": "GameApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
-        units_json = json.dumps([{"slug": e["slug"], "name": e["name"], "type": e["type"], "tier": e["tier"], "rarity": e["rarity"]} for e in self.entities])
-        options_html = "".join([f'<option value="{e["slug"]}">[{e["tier"]}] {e["name"]} ({e["type"]})</option>' for e in self.entities if "hero" not in e["type"].lower()])
-        hero_opts = "".join([f'<option value="{e["slug"]}">[{e["tier"]}] {e["name"]} (Hero Slot)</option>' for e in self.entities if "hero" in e["type"].lower()])
-        slots_html = "".join([f'<div class="calc-input-group"><label class="calc-label">Slot {i} Unit:</label><select id="slot-{i}" class="calc-select" onchange="updateTeam()"><option value="">-- Select Unit --</option>{options_html}</select></div>' for i in range(1, 7)])
-        slots_html += f'<div class="calc-input-group"><label class="calc-label">Dedicated Hero Slot (Optional):</label><select id="hero-slot" class="calc-select" onchange="updateTeam()"><option value="">-- None --</option>{hero_opts}</select></div>'
-        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Team Builder | Build Your Best Team", "Interactive 6-slot Anime Crusaders X Team Builder. Balance Hill, Ground, Hybrid & Support units and share your lineup.", "/team-builder")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Team Builder", "/team-builder")])}<script type="application/ld+json">{json.dumps(schema)}</script></head><body>{self.render_nav("teambuilder")}
-        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Team Builder</span></div><div class="card"><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:0.5rem;">{self.config['site']['name']} Team Builder</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Select up to 6 units to check placement coverage across Hill/Hybrid, Ground, and Support slots for Story &amp; Infinite modes.</p><div class="calc-box"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">{slots_html}</div><div id="team-summary" class="calc-result" style="margin-top:1.25rem;"></div></div></div></main>{self.render_footer()}
+        standard_units = [e for e in self.entities if "hero" not in e["type"].lower()]
+        hero_units = [e for e in self.entities if "hero" in e["type"].lower()]
+        units_json = json.dumps([{"slug": e["slug"], "name": e["name"], "type": e["type"], "tier": e["tier"], "role": e.get("role", "Unknown")} for e in standard_units])
+        hero_slugs_json = json.dumps([e["slug"] for e in hero_units])
+        options_html = "".join([f'<option value="{e["slug"]}">[{e["tier"]}] {e["name"]} ({e["type"]})</option>' for e in standard_units])
+        hero_options = "".join([f'<option value="{e["slug"]}">[{e["tier"]}] {e["name"]} ({e["type"]})</option>' for e in hero_units])
+        slots_html = "".join([f'<div class="calc-input-group"><label class="calc-label" for="slot-{i}">Deployment Slot {i}:</label><select id="slot-{i}" class="calc-select" onchange="updateTeam()"><option value="">— Select Unit —</option>{options_html}</select></div>' for i in range(1, 7)])
+        hero_html = f'<div class="calc-input-group" style="margin-top:1rem;"><label class="calc-label" for="hero-slot">Dedicated Hero Slot (separate from six deployment slots):</label><select id="hero-slot" class="calc-select" onchange="updateTeam()"><option value="">— No Hero selected —</option>{hero_options}</select></div>' if hero_units else ""
+        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Team Builder | Team Coverage Checker", "Build a six-unit Anime Crusaders X lineup and check Hill, Ground and Support coverage, with a separate Hero slot.", "/team-builder")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Team Builder", "/team-builder")])}<script type="application/ld+json">{json.dumps(schema)}</script></head><body>{self.render_nav("teambuilder")}
+        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Team Builder</span></div><div class="card"><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:.5rem;">{self.config['site']['name']} Team Coverage Checker</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Choose up to six standard deployment units. This tool checks placement coverage and duplicate selections; it does not estimate damage, team strength, crowd control, or mode readiness.</p><div class="calc-box"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">{slots_html}</div>{hero_html}<div id="team-summary" class="calc-result" style="margin-top:1.25rem;" aria-live="polite">Select units to check coverage.</div></div></div></main>{self.render_footer()}
         <script>
         const units = {units_json};
         const unitMap = Object.fromEntries(units.map(u => [u.slug, u]));
+        const heroSlugs = new Set({hero_slugs_json});
         function updateTeam() {{
             const chosen = [];
             for (let i = 1; i <= 6; i++) {{
                 const v = document.getElementById('slot-' + i).value;
                 if (v && unitMap[v]) chosen.push(unitMap[v]);
             }}
-            const heroV = document.getElementById('hero-slot') ? document.getElementById('hero-slot').value : '';
-            if (heroV && unitMap[heroV]) chosen.push(unitMap[heroV]);
-            const counts = {{ hill: 0, ground: 0, support: 0, cc: 0, sPlus: 0 }};
+            const duplicates = chosen.map(u => u.slug).filter((slug, i, arr) => arr.indexOf(slug) !== i);
+            const counts = {{ hill: 0, ground: 0, support: 0 }};
             chosen.forEach(u => {{
                 const t = u.type.toLowerCase();
-                if (t.includes('hill')) counts.hill++;
-                else if (t.includes('ground')) counts.ground++;
-                else if (t.includes('support')) counts.support++;
-                if (u.slug === 'kurimi' || u.slug === 'zero-emperor') counts.cc++;
-                if (u.tier === 'S+') counts.sPlus++;
+                if (t.includes('hill') || t.includes('hybrid')) counts.hill++;
+                if (t.includes('ground')) counts.ground++;
+                if (t.includes('support')) counts.support++;
             }});
+            const heroSelect = document.getElementById('hero-slot');
+            const heroLabel = heroSelect && heroSelect.value ? heroSelect.options[heroSelect.selectedIndex].text : 'None selected';
             const el = document.getElementById('team-summary');
-            if (!chosen.length) {{ el.innerHTML = '<strong>Pick units above to analyze your team composition.</strong>'; return; }}
-            let score = 0;
-            if (counts.hill >= 1) score += 25;
-            if (counts.ground >= 1) score += 25;
-            if (counts.support >= 1) score += 25;
-            if (counts.cc >= 1) score += 15;
-            if (chosen.length >= 5) score += 10;
-            const dpsPct = Math.min(100, Math.round(((counts.hill + counts.ground) / 3) * 100));
-            const supPct = Math.min(100, Math.round((counts.support / 2) * 100));
-            const ccPct = counts.cc >= 1 ? 100 : 0;
-            let advice = [];
-            if (counts.hill === 0) advice.push('Missing Hill/Hybrid DPS (e.g., Goju vs Sukuno, Gilgamesh, Ishtall).');
-            if (counts.ground === 0) advice.push('Missing Ground DPS (e.g., Mely, Higuru, Excalibur).');
-            if (counts.support === 0) advice.push('Missing Support buff/economy unit (e.g., AI Idol, Kurimi).');
-            if (counts.cc === 0) advice.push('No Time/Crowd Control unit detected (Kurimi recommended for Infinite).');
-            el.innerHTML = '<div><strong>Team Completeness Score:</strong> <span style="color:var(--accent);font-size:1.3rem;font-weight:900;">' + score + '/100</span> • <strong>Slots:</strong> ' + chosen.length + '/6</div>' +
-                '<div style="margin-top:0.5rem;"><strong>Main DPS:</strong> ' + dpsPct + '% | <strong>Support:</strong> ' + supPct + '% | <strong>Crowd Control:</strong> ' + ccPct + '%</div>' +
-                '<div style="margin-top:0.4rem;"><strong>Mode Fit:</strong> Story ' + (counts.hill + counts.ground >= 2 ? 'Strong' : 'Needs DPS') + ' • Infinite ' + (score >= 85 ? 'Ready' : 'Needs Support/CC') + '</div>' +
-                '<div style="margin-top:0.5rem;color:' + (advice.length ? '#fbbf24' : '#34d399') + ';">' + (advice.length ? advice.join(' ') : '✓ Balanced team coverage across DPS, Support, and Crowd Control!') + '</div>';
+            if (!chosen.length && (!heroSelect || !heroSelect.value)) {{ el.textContent = 'Select units to check coverage.'; return; }}
+            const missing = [];
+            if (!counts.hill) missing.push('Hill / Hybrid');
+            if (!counts.ground) missing.push('Ground');
+            if (!counts.support) missing.push('Support');
+            const duplicateMessage = duplicates.length ? '<p style="color:#fbbf24;margin-top:.5rem;"><strong>Duplicate selection:</strong> ' + [...new Set(duplicates)].map(slug => unitMap[slug].name).join(', ') + '. Each slot currently counts as a separate selection; remove duplicates if unintended.</p>' : '';
+            el.innerHTML = '<div><strong>Selected standard units:</strong> ' + chosen.length + '/6</div>' +
+                '<div style="margin-top:.5rem;"><strong>Coverage:</strong> Hill / Hybrid ' + counts.hill + ' • Ground ' + counts.ground + ' • Support ' + counts.support + '</div>' +
+                '<div style="margin-top:.5rem;"><strong>Dedicated Hero Slot:</strong> ' + heroLabel + '</div>' +
+                '<div style="margin-top:.5rem;color:' + (missing.length ? '#fbbf24' : '#34d399') + ';">' + (missing.length ? 'No selected unit in: ' + missing.join(', ') + '.' : 'All three tracked placement categories are represented.') + '</div>' + duplicateMessage +
+                '<p style="color:var(--text-muted);font-size:.85rem;margin-top:.6rem;">Coverage is based only on the placement labels in the current unit dataset. It is not a performance or Infinite-mode recommendation.</p>';
         }}
         const addSlug = new URLSearchParams(location.search).get('add');
-        if (addSlug && unitMap[addSlug]) {{
-            if (unitMap[addSlug].type.toLowerCase().includes('hero')) document.getElementById('hero-slot').value = addSlug;
-            else document.getElementById('slot-1').value = addSlug;
+        if (addSlug && heroSlugs.has(addSlug) && document.getElementById('hero-slot')) {{
+            document.getElementById('hero-slot').value = addSlug;
+            document.getElementById('slot-1').value = 'goju-vs-sukuno';
+        }} else if (addSlug && unitMap[addSlug]) {{
+            document.getElementById('slot-1').value = addSlug;
         }} else {{
             document.getElementById('slot-1').value = 'goju-vs-sukuno';
         }}
@@ -475,26 +477,32 @@ class WikiBuilder:
         schema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": f"{self.config['site']['name']} Unit Comparison Tool", "operatingSystem": "Web", "applicationCategory": "GameApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}
         units_json = json.dumps(self.entities)
         options_html = "".join([f'<option value="{e["slug"]}">{e["name"]} ({e["type"]} • {e["tier"]})</option>' for e in self.entities])
-        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Unit Comparison | Compare Units", "Compare any two Anime Crusaders X units side-by-side by placement, tier ranking, rarity, strengths, and synergies.", "/unit-comparison")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Unit Comparison", "/unit-comparison")])}<script type="application/ld+json">{json.dumps(schema)}</script></head><body>{self.render_nav("compare")}
-        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Unit Comparison</span></div><div class="card"><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:0.5rem;">Compare {self.config['site']['name']} Units</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Select two units below to compare placement type, tier ranking, strengths, and optimal synergies.</p><div class="calc-box"><div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;"><div><label class="calc-label">Unit A:</label><select id="unit-a" class="calc-select" onchange="compareUnits()">{options_html}</select></div><div><label class="calc-label">Unit B:</label><select id="unit-b" class="calc-select" onchange="compareUnits()">{options_html}</select></div></div><div id="cmp-out" style="margin-top:1.5rem;"></div></div></div></main>{self.render_footer()}
+        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Unit Comparison | Compare Units", "Compare Anime Crusaders X units by placement, tier, traits, recorded stats, costs, and build notes.", "/unit-comparison")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Unit Comparison", "/unit-comparison")])}<script type="application/ld+json">{json.dumps(schema)}</script></head><body>{self.render_nav("compare")}
+        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Unit Comparison</span></div><div class="card"><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:.5rem;">Compare {self.config['site']['name']} Units</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Select two units. Only values recorded in the unit database are shown; missing values are marked Not recorded.</p><div class="calc-box"><div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;"><div><label class="calc-label" for="unit-a">Unit A:</label><select id="unit-a" class="calc-select" onchange="compareUnits()">{options_html}</select></div><div><label class="calc-label" for="unit-b">Unit B:</label><select id="unit-b" class="calc-select" onchange="compareUnits()">{options_html}</select></div></div><div id="cmp-out" style="margin-top:1.5rem;"></div></div></div></main>{self.render_footer()}
         <script>
         const allUnits = {units_json};
         const uMap = Object.fromEntries(allUnits.map(u => [u.slug, u]));
+        const esc = value => String(value ?? 'Not recorded').replace(/[&<>"']/g, ch => ({{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}}[ch]));
+        function statRows(a, b) {{
+            const excluded = new Set(['tier ranking', 'placement', 'role', 'best game mode', 'recommended traits', 'rarity']);
+            const keys = [...new Set([...Object.keys(a.stats || {{}}), ...Object.keys(b.stats || {{}})])].filter(k => !excluded.has(k.toLowerCase()));
+            return keys.map(k => '<tr><td>' + esc(k) + '</td><td>' + esc((a.stats || {{}})[k]) + '</td><td>' + esc((b.stats || {{}})[k]) + '</td></tr>').join('');
+        }}
         function compareUnits() {{
             const a = uMap[document.getElementById('unit-a').value];
             const b = uMap[document.getElementById('unit-b').value];
             if (!a || !b) return;
-            document.getElementById('cmp-out').innerHTML = '<table class="stats-table"><thead><tr><th>Attribute</th><th>' + a.name + '</th><th>' + b.name + '</th></tr></thead><tbody>' +
-                '<tr><td>Placement</td><td>' + a.type + '</td><td>' + b.type + '</td></tr>' +
-                '<tr><td>Role</td><td>' + (a.role || 'Main DPS') + '</td><td>' + (b.role || 'Main DPS') + '</td></tr>' +
-                '<tr><td>Tier</td><td><strong>' + a.tier + '</strong></td><td><strong>' + b.tier + '</strong></td></tr>' +
-                '<tr><td>Best Game Mode</td><td>' + (a.gameMode || 'Progressive & Infinite') + '</td><td>' + (b.gameMode || 'Progressive & Infinite') + '</td></tr>' +
-                '<tr><td>Recommended Traits</td><td>' + (a.traits || 'Damage / Range') + '</td><td>' + (b.traits || 'Damage / Range') + '</td></tr>' +
-                '<tr><td>DPS / SPA / Range</td><td>' + (a.dps || 'Data pending verification') + ' / ' + (a.spa || '—') + ' / ' + (a.range || '—') + '</td><td>' + (b.dps || 'Data pending verification') + ' / ' + (b.spa || '—') + ' / ' + (b.range || '—') + '</td></tr>' +
-                '<tr><td>Place / Upgrade Cost</td><td>' + (a.placeCost || 'Pending') + ' / ' + (a.upgradeCost || 'Pending') + '</td><td>' + (b.placeCost || 'Pending') + ' / ' + (b.upgradeCost || 'Pending') + '</td></tr>' +
-                '<tr><td>Summary &amp; Kit</td><td>' + a.description + '</td><td>' + b.description + '</td></tr>' +
-                '<tr><td>Best Synergy</td><td>' + a.bestBuild + '</td><td>' + b.bestBuild + '</td></tr>' +
-                '<tr><td>Full Page</td><td><a href="/units/' + a.slug + '" style="color:var(--accent);">View ' + a.name + ' →</a></td><td><a href="/units/' + b.slug + '" style="color:var(--accent);">View ' + b.name + ' →</a></td></tr>' +
+            const rows = [
+                ['Placement', a.type, b.type], ['Role', a.role, b.role], ['Tier', a.tier, b.tier],
+                ['Rarity', a.rarity, b.rarity], ['Best Game Mode', a.gameMode, b.gameMode],
+                ['Recommended Traits', a.traits, b.traits],
+                ['DPS', a.dps, b.dps], ['SPA', a.spa, b.spa], ['Range', a.range, b.range],
+                ['Place Cost', a.placeCost, b.placeCost], ['Max Upgrade Cost', a.upgradeCost, b.upgradeCost]
+            ].map(r => '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td><td>' + esc(r[2]) + '</td></tr>').join('');
+            document.getElementById('cmp-out').innerHTML = '<table class="stats-table"><thead><tr><th>Attribute</th><th>' + esc(a.name) + '</th><th>' + esc(b.name) + '</th></tr></thead><tbody>' + rows + statRows(a, b) +
+                '<tr><td>Description</td><td>' + esc(a.description) + '</td><td>' + esc(b.description) + '</td></tr>' +
+                '<tr><td>Best Build / Synergy</td><td>' + esc(a.bestBuild) + '</td><td>' + esc(b.bestBuild) + '</td></tr>' +
+                '<tr><td>Full Page</td><td><a href="/units/' + encodeURIComponent(a.slug) + '" style="color:var(--accent);">View ' + esc(a.name) + ' →</a></td><td><a href="/units/' + encodeURIComponent(b.slug) + '" style="color:var(--accent);">View ' + esc(b.name) + ' →</a></td></tr>' +
                 '</tbody></table>';
         }}
         const qa = new URLSearchParams(location.search).get('a');
@@ -507,9 +515,9 @@ class WikiBuilder:
 
     def build_editorial_pages(self):
         pages = [
-            ("best-units", f"{self.config['site']['name']} Best Units | Top Characters Ranked", f"Best Units in {self.config['site']['name']}", "Upgrade priority and top unit recommendations across Progressive, Infinite, and Boss modes.", self.entities[:10]),
-            ("best-dps", f"{self.config['site']['name']} Best DPS Units | Top Damage Dealers", f"Best DPS Units in {self.config['site']['name']}", "Balanced top DPS picks across Hill/Hybrid, Hero, and Ground lanes.", [e for e in self.entities if "hill" in e["type"].lower() or "hero" in e["type"].lower()][:5] + [e for e in self.entities if e["type"].lower() == "ground"][:5]),
-            ("best-support", f"{self.config['site']['name']} Best Support Units", f"Best Support Units in {self.config['site']['name']}", "Top buffer, economy, and time-control Support units for Infinite mode scaling.", [e for e in self.entities if "support" in e["type"].lower()]),
+            ("best-units", f"{self.config['site']['name']} Featured Units | Tracked Roster", f"Featured Units in {self.config['site']['name']}", "Browse the complete RBXMeta tracked roster by current tier labels. This is not a separate mode-specific ranking.", sorted(self.entities, key=lambda e: ({"S+": 0, "S": 1, "A": 2}.get(e.get("tier"), 3), e.get("name", "")))),
+            ("best-dps", f"{self.config['site']['name']} DPS Units | Tracked Damage Dealers", f"DPS Units in {self.config['site']['name']}", "Tracked units labelled Main DPS, grouped across standard placement types and dedicated Hero slots; not a measured DPS ranking.", [e for e in self.entities if "dps" in e.get("role", "").lower()]),
+            ("best-support", f"{self.config['site']['name']} Support Units | Tracked Roster", f"Support Units in {self.config['site']['name']}", "All tracked units currently labelled Support; the list does not imply verified buff values or a mode-specific ranking.", [e for e in self.entities if "support" in e["type"].lower()]),
         ]
         for slug, title, h1, desc, subset in pages:
             cards = "".join([f'<a href="/units/{e["slug"]}" class="entity-card"><div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><strong>{e["name"]}</strong><span class="rarity-badge rarity-{e["rarity"]}">{e["rarity"]}</span></div><p style="color:var(--text-muted);font-size:0.88rem;">{e["type"]} • Tier {e["tier"]} — {e["description"]}</p></div><div style="margin-top:0.75rem;color:var(--accent);font-weight:700;">View Build →</div></a>' for e in subset])
@@ -518,8 +526,10 @@ class WikiBuilder:
             with open(os.path.join(self.dist_dir, f"{slug}.html"), 'w', encoding='utf-8') as f:
                 f.write(html)
 
+        confirmed_code_names = [c["code"] for c in self.codes if c.get("status", "").lower() == "active" and "unverified" not in c.get("verification", "").lower()]
+        confirmed_code_text = ", ".join(f"<code>{code}</code>" for code in confirmed_code_names) or "No cross-source confirmed codes currently listed"
         updates_html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Updates & Patch Notes", "Latest Anime Crusaders X Anniversary Re-Release patch notes, new Hero units, and meta shifts.", "/updates")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Updates", "/updates")])}{self.render_schema_article(f"{self.config['site']['name']} Updates", "Latest Anime Crusaders X patch notes and meta changes.", "/updates")}</head><body>{self.render_nav("updates")}
-        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Updates</span></div><div class="card"><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:1rem;">{self.config['site']['name']} Update Log</h1><div style="background:var(--bg-card-sub);border:1px solid var(--border);border-radius:0.65rem;padding:1.25rem;margin-bottom:1rem;"><span class="badge-verified">2026-11-16 • ANNIVERSARY RE-RELEASE</span><h2 style="margin:0.5rem 0;">Anime Crusaders X Re-Release &amp; New Codes</h2><p style="color:var(--text-muted);">Added Eskanoor (first Hero unit), Vegeto Fusion, and active codes <code>ACBESTTD2026</code>, <code>THANKYOUFOR30KMAJORFIXES</code>, <code>WELCOMETOACX</code>. Check the updated <a href="/tier-list" style="color:var(--accent);">Tier List</a> and <a href="/codes" style="color:var(--accent);">Codes</a>.</p></div></div></main>{self.render_footer()}</body></html>"""
+        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Updates</span></div><div class="card"><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:1rem;">{self.config['site']['name']} Update Log</h1><div style="background:var(--bg-card-sub);border:1px solid var(--border);border-radius:0.65rem;padding:1.25rem;margin-bottom:1rem;"><span class="badge-verified">2026-11-16 • ANNIVERSARY RE-RELEASE</span><h2 style="margin:0.5rem 0;">Anime Crusaders X Re-Release &amp; New Codes</h2><p style="color:var(--text-muted);">Added Eskanoor (first Hero unit), Vegeto Fusion, and cross-source confirmed codes: {confirmed_code_text}. Codes with mixed reports are shown separately on the <a href="/codes" style="color:var(--accent);">Codes</a> page.</p>Check the updated <a href="/tier-list" style="color:var(--accent);">Tier List</a>.</div></div></main>{self.render_footer()}</body></html>"""
         with open(os.path.join(self.dist_dir, "updates.html"), 'w', encoding='utf-8') as f:
             f.write(updates_html)
 
@@ -549,13 +559,13 @@ class WikiBuilder:
         with open(os.path.join(gdir, 'index.html'), 'w', encoding='utf-8') as f:
             f.write(idx)
         for g in self.guides:
-            gh = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{g['title']} | {self.config['site']['name']}", g['excerpt'], f"/guides/{g['slug']}")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Guides", "/guides/"), (g['title'], f"/guides/{g['slug']}")])}{self.render_schema_article(g['title'], g['excerpt'], f"/guides/{g['slug']}", g['updatedDate'])}</head><body>{self.render_nav("guides")}<main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/guides/">Guides</a> <span>/</span> <span>{g['title']}</span></div><article class="card"><span class="badge-verified">{g['category']}</span><h1 style="font-size:2.15rem;font-weight:900;margin:0.75rem 0;">{g['title']}</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Updated: {g['updatedDate']}</p><div style="font-size:1.08rem;line-height:1.8;color:#e2e8f0;">{g['content'].replace('/database/', '/units/')}</div></article></main>{self.render_footer()}</body></html>"""
+            gh = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{g['title']} | {self.config['site']['name']}", g['excerpt'], f"/guides/{g['slug']}")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Guides", "/guides/"), (g['title'], f"/guides/{g['slug']}")])}{self.render_schema_article(g['title'], g['excerpt'], f"/guides/{g['slug']}", g['updatedDate'], schema_type="Article")}</head><body>{self.render_nav("guides")}<main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/guides/">Guides</a> <span>/</span> <span>{g['title']}</span></div><article class="card"><span class="badge-verified">{g['category']}</span><h1 style="font-size:2.15rem;font-weight:900;margin:0.75rem 0;">{g['title']}</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Updated: {g['updatedDate']}</p><div style="font-size:1.08rem;line-height:1.8;color:#e2e8f0;">{g['content'].replace('/database/', '/units/')}</div></article></main>{self.render_footer()}</body></html>"""
             with open(os.path.join(gdir, f"{g['slug']}.html"), 'w', encoding='utf-8') as f:
                 f.write(gh)
 
     def build_localized_pages(self):
         today = datetime.now().strftime('%Y-%m-%d')
-        active = [c for c in self.codes if c["status"] == "Active"]
+        active = [c for c in self.codes if c.get("status", "").lower() == "active" and "unverified" not in c.get("verification", "").lower()]
         for lang, label_codes, label_tl in [("es", "Códigos de Anime Crusaders X (Noviembre 2026)", "Tier List de Anime Crusaders X"), ("pt", "Códigos de Anime Crusaders X (Novembro 2026)", "Tier List de Anime Crusaders X")]:
             ldir = os.path.join(self.dist_dir, lang)
             os.makedirs(ldir, exist_ok=True)
