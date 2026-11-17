@@ -25,7 +25,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Goju vs Sukuno (Heian) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Goju vs Sukuno (Heian) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -59,7 +59,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Gilgamesh (The Golden King) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Gilgamesh (The Golden King) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -93,7 +93,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Barusu (From Zero) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Barusu (From Zero) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -127,7 +127,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Ishtall (Goddess of Heaven) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Ishtall (Goddess of Heaven) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -142,14 +142,14 @@
     "rarity": "Mythical",
     "rollChance": "Hill / Hybrid Placement",
     "tier": "S",
-    "description": "Einz (Sorcerer King) is a S-Tier Mythical Hill / Hybrid unit in Anime Crusaders X. High-demand endgame magic DPS.",
+    "description": "Einz (Sorcerer King) is a top-tier Anniversary Hybrid/Hill carry, frequently paired with the Crusader trait (+300% Damage, -10% SPA, +10% Range, 1-placement limit).",
     "stats": {
       "Tier Ranking": "S",
       "Placement": "Hill / Hybrid",
       "Role": "Main DPS",
       "Best Game Mode": "Infinite & Progressive",
       "Evolution": "Evolution Recommended for Endgame",
-      "Recommended Traits": "Damage / Range / Cooldown",
+      "Recommended Traits": "Crusader (+300% DMG, -10% SPA, +10% Range) / Damage",
       "Rarity": "Mythical",
       "Last Updated": "2026-11-17"
     },
@@ -161,11 +161,11 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Einz (Sorcerer King) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Einz (Sorcerer King) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
-    "traits": "Damage / Range / Cooldown",
+    "traits": "Crusader (+300% DMG, -10% SPA, +10% Range) / Damage",
     "lastTested": "2026-11-17 (Media Consensus)",
     "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
   },
@@ -176,14 +176,14 @@
     "rarity": "Mythical",
     "rollChance": "Hill / Hybrid Placement",
     "tier": "S",
-    "description": "Eskanoor is a S-Tier Mythical Hill / Hybrid unit in Anime Crusaders X. Strong burst scaling meta unit.",
+    "description": "Eskanoor (The One) is Anime Crusaders X's first-ever Hero unit, occupying a separate dedicated Hero slot and scaling dynamically through takedowns. Unlocked by clearing 150 Hard waves in 'The One' trial.",
     "stats": {
       "Tier Ranking": "S",
-      "Placement": "Hill / Hybrid",
+      "Placement": "Dedicated Hero Slot",
       "Role": "Main DPS",
       "Best Game Mode": "Infinite & Progressive",
       "Evolution": "Evolution Recommended for Endgame",
-      "Recommended Traits": "Damage / Range / Cooldown",
+      "Recommended Traits": "Hero Pool: The One / Shining / Sunspot / Seven Sins",
       "Rarity": "Mythical",
       "Last Updated": "2026-11-17"
     },
@@ -194,12 +194,12 @@
     "cons": [
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
-    "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Eskanoor with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "howToGet": "Clear 150 Hard waves in 'The One' trial using the supplied team (not a standard banner pull).",
+    "bestBuild": "Pair Eskanoor with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
-    "traits": "Damage / Range / Cooldown",
+    "traits": "Hero Pool: The One / Shining / Sunspot / Seven Sins",
     "lastTested": "2026-11-17 (Media Consensus)",
     "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
   },
@@ -229,7 +229,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Seraph (Fallen) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Seraph (Fallen) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
@@ -263,7 +263,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Shadow (Atomic) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Shadow (Atomic) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
@@ -297,7 +297,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Getu (Master of Curses) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Getu (Master of Curses) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
@@ -312,7 +312,7 @@
     "rarity": "Mythical",
     "rollChance": "Ground Placement",
     "tier": "S+",
-    "description": "Mely (Assault) is a S+-Tier Mythical Ground unit in Anime Crusaders X. Top Ground DPS staple in current meta.",
+    "description": "Mely (Assault) is a Secret-tier Ground carry dealing Physical & Dark damage with Lostvein, Full Counter, Revenge Counter, Demon King's Mandate, and Swap Modes.",
     "stats": {
       "Tier Ranking": "S+",
       "Placement": "Ground",
@@ -321,7 +321,8 @@
       "Evolution": "Evolution Recommended for Endgame",
       "Recommended Traits": "Damage / Range / Cooldown",
       "Rarity": "Mythical",
-      "Last Updated": "2026-11-17"
+      "Last Updated": "2026-11-17",
+      "Damage Types": "Physical & Dark (Lostvein / Full Counter)"
     },
     "pros": [
       "Top Ground DPS staple in current meta.",
@@ -331,7 +332,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Mely (Assault) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Mely (Assault) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -365,7 +366,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Higuru (Judgement) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Higuru (Judgement) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -399,7 +400,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Spear (Vigorous Warrior) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Spear (Vigorous Warrior) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -433,7 +434,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Powaa (Blood Queen) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Powaa (Blood Queen) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -467,7 +468,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Excalibur (King of Blades) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Excalibur (King of Blades) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -501,7 +502,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Sun Woo (System) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Sun Woo (System) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
@@ -535,7 +536,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Ant King (Shadow Fang) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Ant King (Shadow Fang) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
@@ -569,7 +570,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Ryoma (Sword God) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Ryoma (Sword God) with top Support units like Kurimi (Time Queen), AI (Idol), and Zero (True Emperor).",
     "role": "Main DPS",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
@@ -603,7 +604,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Kurimi (Time Queen) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Kurimi (Time Queen) with top DPS carries like Goju vs Sukuno (Heian), Gilgamesh (The Golden King), Mely (Assault), and Higuru (Judgement).",
     "role": "Support / Buffer",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -637,7 +638,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair AI (Idol) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair AI (Idol) with top DPS carries like Goju vs Sukuno (Heian), Gilgamesh (The Golden King), Mely (Assault), and Higuru (Judgement).",
     "role": "Support / Buffer",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -671,7 +672,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Zero (True Emperor) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Zero (True Emperor) with top DPS carries like Goju vs Sukuno (Heian), Gilgamesh (The Golden King), Mely (Assault), and Higuru (Judgement).",
     "role": "Support / Buffer",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -705,7 +706,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Mr. Champion with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Mr. Champion with top DPS carries like Goju vs Sukuno (Heian), Gilgamesh (The Golden King), Mely (Assault), and Higuru (Judgement).",
     "role": "Support / Buffer",
     "gameMode": "Infinite & Progressive",
     "evolution": "Evolution Recommended for Endgame",
@@ -739,7 +740,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Alfonz (Kind Heart) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Alfonz (Kind Heart) with top DPS carries like Goju vs Sukuno (Heian), Gilgamesh (The Golden King), Mely (Assault), and Higuru (Judgement).",
     "role": "Support / Buffer",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
@@ -773,7 +774,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Shunks (Haki) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Shunks (Haki) with top DPS carries like Goju vs Sukuno (Heian), Gilgamesh (The Golden King), Mely (Assault), and Higuru (Judgement).",
     "role": "Support / Buffer",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
@@ -807,7 +808,7 @@
       "Requires Trait Remnants & Cubes to optimize endgame traits"
     ],
     "howToGet": "Summon from banners using Gems (redeem active lobby Codes for free Gems & Trait Remnants).",
-    "bestBuild": "Pair Bones (Soul Guitarist) with top Support units like Kurimi (Time Queen) and AI (Idol).",
+    "bestBuild": "Pair Bones (Soul Guitarist) with top DPS carries like Goju vs Sukuno (Heian), Gilgamesh (The Golden King), Mely (Assault), and Higuru (Judgement).",
     "role": "Support / Buffer",
     "gameMode": "Story & Progressive",
     "evolution": "Usable Base / Evolvable",
