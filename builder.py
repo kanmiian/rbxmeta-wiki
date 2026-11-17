@@ -565,6 +565,9 @@ class WikiBuilder:
             f.write(f"User-agent: *\nAllow: /\n\nSitemap: {domain}/sitemap.xml\n")
         with open(os.path.join(self.dist_dir, '_redirects'), 'w', encoding='utf-8') as f:
             f.write("\n".join(reds) + "\n")
+        indexnow_key = "d9fff1aa6c384251b984519c49ed6831"
+        with open(os.path.join(self.dist_dir, f'{indexnow_key}.txt'), 'w', encoding='utf-8') as f:
+            f.write(indexnow_key)
 
     def build_all(self):
         if os.path.exists(self.dist_dir):
