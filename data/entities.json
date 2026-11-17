@@ -31,7 +31,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "gilgamesh",
@@ -65,7 +66,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "barusu",
@@ -99,7 +101,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "ishtall",
@@ -133,13 +136,14 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "einz",
     "name": "Einz (Sorcerer King)",
     "type": "Hill / Hybrid",
-    "rarity": "Mythical",
+    "rarity": "Crusader",
     "rollChance": "Hill / Hybrid Placement",
     "tier": "S",
     "description": "Einz (Sorcerer King) is a top-tier Anniversary Hybrid/Hill carry, frequently paired with the Crusader trait (+300% Damage, -10% SPA, +10% Range, 1-placement limit).",
@@ -150,7 +154,7 @@
       "Best Game Mode": "Infinite & Progressive",
       "Evolution": "Evolution Recommended for Endgame",
       "Recommended Traits": "Crusader (+300% DMG, -10% SPA, +10% Range) / Damage",
-      "Rarity": "Mythical",
+      "Rarity": "Crusader (Reported by MrGuider)",
       "Last Updated": "2026-11-17"
     },
     "pros": [
@@ -167,14 +171,15 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Crusader (+300% DMG, -10% SPA, +10% Range) / Damage",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "eskanoor",
     "name": "Eskanoor",
-    "type": "Hill / Hybrid",
+    "type": "Hero",
     "rarity": "Mythical",
-    "rollChance": "Hill / Hybrid Placement",
+    "rollChance": "Dedicated Hero Slot (The One Trial)",
     "tier": "S",
     "description": "Eskanoor (The One) is Anime Crusaders X's first-ever Hero unit, occupying a separate dedicated Hero slot and scaling dynamically through takedowns. Unlocked by clearing 150 Hard waves in 'The One' trial.",
     "stats": {
@@ -201,7 +206,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Hero Pool: The One / Shining / Sunspot / Seven Sins",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "seraph-fallen",
@@ -235,7 +241,8 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "shadow-atomic",
@@ -269,7 +276,8 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "getu",
@@ -303,13 +311,14 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "mely-assault",
     "name": "Mely (Assault)",
     "type": "Ground",
-    "rarity": "Mythical",
+    "rarity": "Secret",
     "rollChance": "Ground Placement",
     "tier": "S+",
     "description": "Mely (Assault) is a Secret-tier Ground carry dealing Physical & Dark damage with Lostvein, Full Counter, Revenge Counter, Demon King's Mandate, and Swap Modes.",
@@ -320,7 +329,7 @@
       "Best Game Mode": "Infinite & Progressive",
       "Evolution": "Evolution Recommended for Endgame",
       "Recommended Traits": "Damage / Range / Cooldown",
-      "Rarity": "Mythical",
+      "Rarity": "Secret (Reported by MrGuider)",
       "Last Updated": "2026-11-17",
       "Damage Types": "Physical & Dark (Lostvein / Full Counter)"
     },
@@ -338,7 +347,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "higuru",
@@ -372,7 +382,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "spear",
@@ -406,7 +417,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "powaa",
@@ -440,7 +452,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "excalibur-unit",
@@ -474,7 +487,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "sun-woo",
@@ -508,7 +522,8 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "ant-king",
@@ -542,7 +557,8 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "ryoma",
@@ -576,7 +592,8 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
   },
   {
     "slug": "kurimi",
@@ -610,7 +627,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Range / Cost Reduction / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires strong DPS carries to clear waves."
   },
   {
     "slug": "ai-idol",
@@ -644,7 +662,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Range / Cost Reduction / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires strong DPS carries to clear waves."
   },
   {
     "slug": "zero-emperor",
@@ -678,7 +697,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Range / Cost Reduction / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires strong DPS carries to clear waves."
   },
   {
     "slug": "mr-champion",
@@ -712,7 +732,8 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Range / Cost Reduction / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires strong DPS carries to clear waves."
   },
   {
     "slug": "alfonz",
@@ -746,7 +767,8 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Range / Cost Reduction / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires strong DPS carries to clear waves."
   },
   {
     "slug": "shunks",
@@ -780,7 +802,8 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Range / Cost Reduction / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires strong DPS carries to clear waves."
   },
   {
     "slug": "bones-guitarist",
@@ -814,6 +837,7 @@
     "evolution": "Usable Base / Evolvable",
     "traits": "Range / Cost Reduction / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists"
+    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
+    "weakness": "Requires strong DPS carries to clear waves."
   }
 ]
