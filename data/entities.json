@@ -15,7 +15,12 @@
       "Evolution": "Evolution Recommended for Endgame",
       "Recommended Traits": "Damage / Range / Cooldown",
       "Rarity": "Mythical",
-      "Last Updated": "2026-11-17"
+      "Last Updated": "2026-11-17",
+      "Placement Cost": "¥3,000",
+      "Total Upgrade Cost": "¥130,000",
+      "Max Damage": "14,000 (base archive)",
+      "Max SPA": "11s",
+      "Max DPS": "~1,272.7"
     },
     "pros": [
       "Premier endgame Hybrid/Hill DPS powerhouse.",
@@ -31,8 +36,13 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
-    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
+    "source": "32x.dev / MrGuider / Destructoid",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves.",
+    "dps": "~1,272.7",
+    "spa": "11s",
+    "range": "High (scales from base)",
+    "placeCost": "¥3,000",
+    "upgradeCost": "¥130,000"
   },
   {
     "slug": "gilgamesh",
@@ -50,7 +60,13 @@
       "Evolution": "Evolution Recommended for Endgame",
       "Recommended Traits": "Damage / Range / Cooldown",
       "Rarity": "Mythical",
-      "Last Updated": "2026-11-17"
+      "Last Updated": "2026-11-17",
+      "Placement Cost": "¥2,000",
+      "Total Upgrade Cost": "¥111,000 (Evolved) / ¥42,600 (Base)",
+      "Max Damage": "16,500 (Evolved) / 6,320 (Base)",
+      "Max SPA": "10s (Evolved) / 8.5s (Base)",
+      "Max Range": "32 (Evolved) / 28 (Base)",
+      "Max DPS": "1,650 (Evolved) / 743.5 (Base)"
     },
     "pros": [
       "Elite Hybrid damage dealer for all modes.",
@@ -66,8 +82,13 @@
     "evolution": "Evolution Recommended for Endgame",
     "traits": "Damage / Range / Cooldown",
     "lastTested": "2026-11-17 (Media Consensus)",
-    "source": "MrGuider / Destructoid / IGN / Community Tier Lists",
-    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves."
+    "source": "32x.dev / MrGuider",
+    "weakness": "Requires Trait investment and Support buffs for deep Infinite waves.",
+    "dps": "1,650 (Evolved)",
+    "spa": "10s (Evolved)",
+    "range": "32 (Evolved)",
+    "placeCost": "¥2,000",
+    "upgradeCost": "¥111,000 (Evolved)"
   },
   {
     "slug": "barusu",
