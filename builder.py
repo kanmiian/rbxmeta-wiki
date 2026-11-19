@@ -345,7 +345,7 @@ class WikiBuilder:
             t_items = [x for x in hill_units if x["tier"] == tk]
             if not t_items:
                 continue
-            pills = "".join([f'<a href="/units/{x["slug"]}" class="tier-item-pill"><div style="display:flex;justify-content:space-between;"><strong>{x["name"]}</strong><span class="rarity-badge rarity-{x["rarity"]}">{x["rarity"]}</span></div><p style="color:var(--text-muted);font-size:0.86rem;margin-top:0.25rem;">{x["description"][:110]}...</p></a>' for x in t_items])
+            pills = "".join([f'<a href="/units/{x["slug"]}" class="tier-item-pill"><div style="display:flex;justify-content:space-between;"><strong>{x["name"]}</strong><span class="rarity-badge rarity-{x["rarity"]}">{x["rarity"]}</span></div><p style="color:var(--text-muted);font-size:0.86rem;margin-top:0.25rem;">{x["description"]}</p></a>' for x in t_items])
             tier_html += f'<div class="tier-row"><div class="tier-label tier-{tk.replace("+", "-plus")}">{tk}</div><div class="tier-items">{pills}</div></div>'
 
         db_html = "".join([f'<a href="/units/{e["slug"]}" class="entity-card"><div><div style="display:flex;justify-content:space-between;margin-bottom:0.6rem;"><div><h3 style="font-size:1.1rem;font-weight:800;color:#fff;">{e["name"]}</h3><span style="font-size:0.78rem;color:var(--text-muted);">{e["type"]} • Tier {e["tier"]}</span></div><span class="rarity-badge rarity-{e["rarity"]}">{e["rarity"]}</span></div><p style="color:var(--text-muted);font-size:0.88rem;">{e["description"]}</p></div><div style="margin-top:0.85rem;color:var(--accent);font-weight:700;font-size:0.86rem;">Unit Stats →</div></a>' for e in self.entities[:6]])
@@ -425,10 +425,10 @@ class WikiBuilder:
                 t_items = [x for x in items if x["tier"] == tk]
                 if not t_items:
                     continue
-                pills = "".join([f'<a href="/units/{x["slug"]}" class="tier-item-pill"><div style="display:flex;justify-content:space-between;"><strong>{x["name"]}</strong><span class="rarity-badge rarity-{x["rarity"]}">{x["rarity"]}</span></div><p style="color:var(--text-muted);font-size:0.88rem;margin-top:0.25rem;">{x["description"][:115]}...</p></a>' for x in t_items])
+                pills = "".join([f'<a href="/units/{x["slug"]}" class="tier-item-pill"><div style="display:flex;justify-content:space-between;"><strong>{x["name"]}</strong><span class="rarity-badge rarity-{x["rarity"]}">{x["rarity"]}</span></div><p style="color:var(--text-muted);font-size:0.88rem;margin-top:0.25rem;">{x["description"]}</p></a>' for x in t_items])
                 trows += f'<div class="tier-row"><div class="tier-label tier-{tk.replace("+", "-plus")}">{tk}</div><div class="tier-items">{pills}</div></div>'
                 for x in t_items:
-                    tbl += f'<tr><td><strong>{tk}</strong></td><td><a href="/units/{x["slug"]}" style="color:var(--accent);font-weight:700;">{x["name"]}</a></td><td>{x["rarity"]}</td><td>{x.get("role", "DPS")}</td><td>{x.get("gameMode", "Progressive & Infinite")}</td><td>{x.get("traits", "Damage / Range")}</td><td>{x["description"][:95]}...</td></tr>'
+                    tbl += f'<tr><td><strong>{tk}</strong></td><td><a href="/units/{x["slug"]}" style="color:var(--accent);font-weight:700;">{x["name"]}</a></td><td>{x["rarity"]}</td><td>{x.get("role", "DPS")}</td><td>{x.get("gameMode", "Progressive & Infinite")}</td><td>{x.get("traits", "Damage / Range")}</td><td>{x["description"]}</td></tr>'
             panels += f'<section class="tier-category-panel" id="panel-{cid}" style="display:{disp};"><h2 style="font-size:1.4rem;margin-bottom:0.4rem;">{label} Tier List</h2><p style="color:var(--text-muted);margin-bottom:1.25rem;">{desc}</p>{trows}<table class="stats-table"><thead><tr><th>Tier</th><th>Unit</th><th>Rarity</th><th>Role</th><th>Best Mode</th><th>Traits</th><th>Meta Notes</th></tr></thead><tbody>{tbl}</tbody></table></section>'
 
         html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Tier List | Best Units Ranked", f"Searchable {self.config['site']['name']} (Anime Crusader X) unit tier list across Hill, Ground, Hybrid, Support & Hero Slot for Infinite and Story modes.", "/tier-list")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Tier List", "/tier-list")])}{self.render_schema_article(f"{self.config['site']['name']} Tier List", "Complete unit rankings across Hill, Ground, Hybrid, Support, and Hero Slot.", "/tier-list")}</head><body>{self.render_nav("tierlist")}
@@ -606,7 +606,7 @@ class WikiBuilder:
                 f.write(ch)
             tbl = ""
             for e in self.entities:
-                tbl += f'<tr><td><strong>{e["tier"]}</strong></td><td>{e["type"]}</td><td><a href="/units/{e["slug"]}" style="color:var(--accent);">{e["name"]}</a></td><td>{e["description"][:95]}...</td></tr>'
+                tbl += f'<tr><td><strong>{e["tier"]}</strong></td><td>{e["type"]}</td><td><a href="/units/{e["slug"]}" style="color:var(--accent);">{e["name"]}</a></td><td>{e["description"]}</td></tr>'
             th = f'<!DOCTYPE html><html lang="{lang}"><head>{self.render_head_meta(label_tl, label_tl, f"/{lang}/tier-list", robots="noindex, follow")}{self.get_base_css()}</head><body>{self.render_nav("tierlist")}<main class="container main-layout"><div class="card">{self.render_lang_switcher("tier-list", lang)}<div class="badge-verified" style="margin-bottom:0.75rem;">✓ {today}</div><h1>{label_tl}</h1><table class="stats-table"><thead><tr><th>Tier</th><th>Role</th><th>Unit</th><th>Notes</th></tr></thead><tbody>{tbl}</tbody></table></div></main>{self.render_footer()}</body></html>'
             with open(os.path.join(ldir, 'tier-list.html'), 'w', encoding='utf-8') as f:
                 f.write(th)

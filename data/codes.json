@@ -1,5 +1,29 @@
 [
   {
+    "code": "JUSTTHESTART",
+    "reward": "50 Trait Remnants & 1,500 Gems",
+    "status": "Active",
+    "verification": "Cross-source Confirmed",
+    "firstSeen": "2026-11-18",
+    "lastVerified": "2026-11-19",
+    "method": "Cross-checked across IGN & Pro Game Guides",
+    "levelReq": "None (32x Group + Favorite)",
+    "source": "IGN / Pro Game Guides",
+    "isNew": true
+  },
+  {
+    "code": "RobloxVNGBACK",
+    "reward": "30 Trait Remnants & 1,000 Gems",
+    "status": "Active",
+    "verification": "Cross-source Confirmed",
+    "firstSeen": "2026-11-18",
+    "lastVerified": "2026-11-19",
+    "method": "Cross-checked across IGN & Beebom (some trackers report 30-50 Trait Remnants)",
+    "levelReq": "None (32x Group + Favorite)",
+    "source": "IGN / Beebom",
+    "isNew": true
+  },
+  {
     "code": "ACBESTTD2026",
     "reward": "50 Stat Cubes, 50 Relic Cubes, 50 Curse Tokens & 5,000 Gems",
     "status": "Active",
