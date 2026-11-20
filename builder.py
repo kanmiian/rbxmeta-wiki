@@ -109,9 +109,9 @@ class WikiBuilder:
         .entity-card { background: var(--bg-card-sub); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; }
         .entity-card:hover { border-color: var(--accent); }
         .search-input { width: 100%; padding: 0.85rem 1.2rem; background: var(--bg-main); border: 1px solid var(--border); border-radius: 0.6rem; color: #fff; font-size: 1rem; margin-bottom: 1.25rem; outline: none; }
-        .stats-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; }
-        .stats-table th, .stats-table td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--border); text-align: left; }
-        .stats-table th { color: var(--text-muted); font-size: 0.82rem; text-transform: uppercase; }
+        .stats-table, .data-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; }
+        .stats-table th, .stats-table td, .data-table th, .data-table td { padding: 0.8rem 1rem; border-bottom: 1px solid var(--border); text-align: left; }
+        .stats-table th, .data-table th { color: var(--text-muted); font-size: 0.82rem; text-transform: uppercase; }
         .calc-box { background: var(--bg-card-sub); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; }
         .calc-input-group { margin-bottom: 1.15rem; }
         .calc-label { display: block; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-muted); }
@@ -142,6 +142,7 @@ class WikiBuilder:
                     {self.config['site']['name']} <span>Tools</span>
                 </a>
                 <div class="nav-links">
+                    <a href="/wiki" class="{'active' if current_page=='wiki' else ''}">Wiki</a>
                     <a href="/tier-list" class="{'active' if current_page=='tierlist' else ''}">Tier List</a>
                     <a href="/units/" class="{'active' if current_page=='units' else ''}">Units</a>
                     <a href="/team-builder" class="{'active' if current_page=='teambuilder' else ''}">Team Builder</a>
@@ -353,31 +354,158 @@ class WikiBuilder:
         domain = self.config['site']['domain'].rstrip('/')
         ws_schema = {"@context": "https://schema.org", "@type": "WebSite", "name": "RBXMeta — Anime Crusaders X Tools & Wiki", "url": f"{domain}/", "potentialAction": {"@type": "SearchAction", "target": f"{domain}/units/?q={{search_term_string}}", "query-input": "required name=search_term_string"}}
 
-        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(self.config['site']['title'], self.config['site']['description'], "/")}{self.get_base_css()}<script type="application/ld+json">{json.dumps(ws_schema)}</script>{self.render_schema_article("Anime Crusaders X Tools, Tier List & Wiki", self.config['site']['description'], "/")}{self.render_schema_faq(self.config['faqs'])}</head><body>{self.render_nav("home")}
-        <header class="hero"><div class="container"><div class="badge-verified">⚡ ANNIVERSARY RE-RELEASE • VERIFIED {datetime.now().strftime('%Y-%m-%d')}</div><h1>Anime Crusaders X Tier List, Tools &amp; Wiki</h1><p>Welcome to the ultimate Anime Crusaders X resource hub! Discover the latest tier list, explore detailed unit stats, compare characters, and build powerful teams with our free tools.</p><div style="display:flex;justify-content:center;gap:0.85rem;flex-wrap:wrap;"><a href="/tier-list" class="btn-copy" style="padding:0.75rem 1.4rem;">Tier List</a><a href="/team-builder" class="tab-btn">Team Builder</a><a href="/unit-comparison" class="tab-btn">Unit Comparison</a><a href="/units/" class="tab-btn">Units ({len(self.entities)})</a><a href="/codes" class="tab-btn">Codes ({len(confirmed_codes)}+{len(unverified_codes)})</a></div><div class="hero-stats"><div class="hero-stat-box"><div class="hero-stat-num">{len(confirmed_codes)} Confirmed</div><div class="hero-stat-label">+{len(unverified_codes)} Unverified Code</div></div><div class="hero-stat-box"><div class="hero-stat-num">{len(self.entities)}</div><div class="hero-stat-label">Featured Units</div></div><div class="hero-stat-box"><div class="hero-stat-num">4</div><div class="hero-stat-label">Interactive Tools</div></div></div></div></header>
+        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(self.config['site']['title'], self.config['site']['description'], "/")}{self.get_base_css()}<script type="application/ld+json">{json.dumps(ws_schema)}</script>{self.render_schema_article("Anime Crusaders X Tools, Units & Team Builder", self.config['site']['description'], "/")}{self.render_schema_faq(self.config['faqs'])}</head><body>{self.render_nav("home")}
+        <header class="hero"><div class="container"><div class="badge-verified">⚡ ANNIVERSARY RE-RELEASE • VERIFIED {datetime.now().strftime('%Y-%m-%d')}</div><h1>Anime Crusaders X Tools, Units &amp; Team Builder</h1><p>Interactive Team Builder, Unit Comparison, Pity Calculator, and full directory links for Anime Crusaders X on Roblox.</p><div style="display:flex;justify-content:center;gap:0.85rem;flex-wrap:wrap;"><a href="/tier-list" class="btn-copy" style="padding:0.75rem 1.4rem;">Open Anime Crusaders X Tier List →</a><a href="/team-builder" class="tab-btn">Team Builder</a><a href="/unit-comparison" class="tab-btn">Unit Comparison</a><a href="/wiki" class="tab-btn">Anime Crusaders X Wiki</a><a href="/codes" class="tab-btn">Codes ({len(confirmed_codes)}+{len(unverified_codes)})</a></div><div class="hero-stats"><div class="hero-stat-box"><div class="hero-stat-num">{len(confirmed_codes)} Confirmed</div><div class="hero-stat-label">+{len(unverified_codes)} Unverified Code</div></div><div class="hero-stat-box"><div class="hero-stat-num">{len(self.entities)}</div><div class="hero-stat-label">Featured Units</div></div><div class="hero-stat-box"><div class="hero-stat-num">4</div><div class="hero-stat-label">Interactive Tools</div></div></div></div></header>
         <main class="container main-layout">
-            <section class="card"><div class="card-header"><h2 class="card-title">🧰 Anime Crusaders X Core Interactive Tools</h2></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;"><a href="/tier-list" class="tier-item-pill"><strong>🏆 Tier List</strong><p style="color:var(--text-muted);font-size:0.86rem;">Searchable S+ to A rankings by Hill, Ground, Hybrid &amp; Support.</p></a><a href="/team-builder" class="tier-item-pill"><strong>🛡️ Team Builder</strong><p style="color:var(--text-muted);font-size:0.86rem;">Assemble a 6-unit lineup and check role &amp; support coverage.</p></a><a href="/unit-comparison" class="tier-item-pill"><strong>⚖️ Unit Comparison</strong><p style="color:var(--text-muted);font-size:0.86rem;">Compare two units side-by-side by role, tier &amp; synergies.</p></a><a href="/best-units" class="tier-item-pill"><strong>⭐ Best Units Guide</strong><p style="color:var(--text-muted);font-size:0.86rem;">Upgrade priority, Best DPS, and Best Support picks.</p></a></div></section>
+            <section class="card"><div class="card-header"><h2 class="card-title">🧰 Core Anime Crusaders X Tools &amp; Hubs</h2></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;"><a href="/tier-list" class="tier-item-pill"><strong>🏆 Anime Crusaders X Tier List</strong><p style="color:var(--text-muted);font-size:0.86rem;">Searchable S+ to A unit rankings by Hill, Ground, Hybrid &amp; Support.</p></a><a href="/wiki" class="tier-item-pill"><strong>📖 Anime Crusaders X Wiki</strong><p style="color:var(--text-muted);font-size:0.86rem;">Central directory for game mechanics, modes, traits &amp; evolutions.</p></a><a href="/codes" class="tier-item-pill"><strong>🎁 Anime Crusaders X Codes</strong><p style="color:var(--text-muted);font-size:0.86rem;">Cross-source confirmed codes for Gems and Trait Remnants.</p></a><a href="/team-builder" class="tier-item-pill"><strong>🛡️ Team Builder</strong><p style="color:var(--text-muted);font-size:0.86rem;">Assemble a 6-unit lineup plus Dedicated Hero Slot.</p></a><a href="/calculator" class="tier-item-pill"><strong>🎲 Gem, Pity &amp; Trait Calculator</strong><p style="color:var(--text-muted);font-size:0.86rem;">Mythic/Secret pity math, 12-Trait odds &amp; evolution planner.</p></a></div></section>
             {self.render_native_banner("home")}
             <section class="card"><div class="card-header"><h2 class="card-title">🎲 Anime Crusaders X Gem &amp; Pity Calculator</h2><a href="/calculator" style="color:var(--accent);font-weight:700;">Full Calculator →</a></div>{self.render_pity_calculator()}</section>
             <section class="card"><div class="card-header"><h2 class="card-title">🎁 Anime Crusaders X Active Codes (32x Group + Lobby Circle)</h2><a href="/codes" style="color:var(--accent);font-weight:700;">All Codes →</a></div>{codes_html}</section>
-            <section class="card"><div class="card-header"><h2 class="card-title">🏆 Anime Crusaders X Tier List (Hill &amp; Hybrid)</h2><a href="/tier-list" style="color:var(--accent);font-weight:700;">Filter Full Tier List →</a></div>{tier_html}</section>
+            <section class="card"><div class="card-header"><h2 class="card-title">🏆 Meta Snapshot (Hill &amp; Hybrid)</h2><a href="/tier-list" style="color:var(--accent);font-weight:700;">Anime Crusaders X Tier List →</a></div>{tier_html}</section>
             <section class="card"><div class="card-header"><h2 class="card-title">🔥 Anime Crusaders X Evolution, Fusion &amp; Trait Guides</h2><a href="/guides/" style="color:var(--accent);font-weight:700;">All Guides ({len(self.guides)}) →</a></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">{guides_html}</div></section>
             <section class="card"><div class="card-header"><h2 class="card-title">📚 Anime Crusaders X Units Database</h2><a href="/units/" style="color:var(--accent);font-weight:700;">Browse All ({len(self.entities)}) →</a></div><div class="entity-grid">{db_html}</div><div style="margin-top:1.15rem;padding-top:1rem;border-top:1px solid var(--border);font-size:0.86rem;color:var(--text-muted);line-height:1.9;"><strong>All Tracked Units:</strong> {' • '.join([f'<a href="/units/{e["slug"]}" style="color:var(--accent);">{e["name"]}</a>' for e in self.entities])}</div></section>
             <section class="card">
-                <div class="card-header"><h2 class="card-title">📖 How the Anime Crusaders X Tier List &amp; Meta Work</h2></div>
-                <p style="color:#cbd5e1;margin-bottom:1rem;">In <strong>Anime Crusaders X</strong> (also searched as <em>Anime Crusader X</em>), building a winning squad requires balancing four distinct placement and role categories rather than simply stacking high-rarity pulls. Our tier list evaluates every unit across Story, Progressive, Boss, and Infinite waves using multi-source consensus data, evolution scaling, and team synergy.</p>
-                <h3 style="color:#38bdf8;font-size:1.1rem;margin:1rem 0 0.4rem;">1. Hill &amp; Hybrid DPS Units</h3>
-                <p style="color:var(--text-muted);margin-bottom:0.85rem;">Hill and Hybrid units provide elevated sightlines and flexible tile coverage across tight corners and multi-lane maps. Current S+ tier staples such as <strong>Goju vs Sukuno (Heian)</strong>, <strong>Gilgamesh (The Golden King)</strong>, and <strong>Barusu (From Zero)</strong> anchor late-game Infinite runs because they maintain consistent uptime even on crowded maps, while <strong>Ishtall</strong>, <strong>Einz (Sorcerer King)</strong>, and <strong>Eskanoor (The One)</strong> deliver high burst damage once evolved.</p>
-                <h3 style="color:#38bdf8;font-size:1.1rem;margin:1rem 0 0.4rem;">2. Ground Lane Carries</h3>
-                <p style="color:var(--text-muted);margin-bottom:0.85rem;">Ground DPS units lock down primary enemy paths and absorb early-wave pressure. <strong>Mely (Assault)</strong> and <strong>Higuru (Judgement)</strong> lead the Ground meta thanks to strong damage scaling and wave-clear reliability, backed by <strong>Spear (Vigorous Warrior)</strong>, <strong>Powaa (Blood Queen)</strong>, and <strong>Excalibur (King of Blades)</strong>. Mid-game players progressing through Story chapters can also rely on <strong>Sun Woo (System)</strong>, <strong>Ant King</strong>, and <strong>Ryoma</strong>.</p>
-                <h3 style="color:#38bdf8;font-size:1.1rem;margin:1rem 0 0.4rem;">3. Support, Economy &amp; Crowd Control</h3>
-                <p style="color:var(--text-muted);margin-bottom:0.85rem;">No Infinite mode team survives past wave 50 without dedicated Support units. <strong>Kurimi (Time Queen)</strong> provides crucial time-manipulation and crowd control, <strong>AI (Idol)</strong> amplifies team-wide DPS, and <strong>Zero (True Emperor)</strong> offers tactical utility. Use our <a href="/team-builder" style="color:var(--accent);">Team Builder</a> to verify that your 6-slot lineup covers Hill/Hybrid, Ground, and Support roles before spending Trait Remnants.</p>
-                <h3 style="color:#38bdf8;font-size:1.1rem;margin:1rem 0 0.4rem;">4. Pity Math, Trait Rerolls &amp; Upgrade Priority</h3>
-                <p style="color:var(--text-muted);">Before rolling banners, always check the <strong>Gem &amp; Pity Calculator</strong> above: Mythic units guarantee at <strong>200 pulls</strong> (0.5% base rate, 10,000 Gems at 50 Gems per pull) and Secret / Crusader units guarantee at <strong>2,000 pulls</strong> (0.05% base rate). Once you secure an S+ or S tier carry, redeem active <a href="/codes" style="color:var(--accent);">Anime Crusaders X Codes</a> for Trait Remnants and aim for Damage, Range, or Cooldown Reduction traits on DPS units and Range or Cost Reduction on Supports.</p>
+                <div class="card-header"><h2 class="card-title">📖 Getting Started with RBXMeta Tools</h2></div>
+                <p style="color:#cbd5e1;margin-bottom:0.85rem;">Use this hub to jump straight into our interactive utilities: check placement coverage in the <a href="/team-builder" style="color:var(--accent);">Team Builder</a>, compare recorded stats in <a href="/unit-comparison" style="color:var(--accent);">Unit Comparison</a>, and plan banner pulls with the <a href="/calculator" style="color:var(--accent);">Pity Calculator</a>.</p>
+                <p style="color:var(--text-muted);">Looking for full unit rankings or system mechanics? Visit the dedicated <a href="/tier-list" style="color:var(--accent);">Anime Crusaders X Tier List</a> or browse the <a href="/wiki" style="color:var(--accent);">Anime Crusaders X Wiki</a> directory.</p>
             </section>
             <section class="card"><div class="card-header"><h2 class="card-title">❓ Anime Crusaders X Frequently Asked Questions</h2></div>{''.join([f'<div style="margin-bottom:1.25rem;"><h3 style="color:#38bdf8;font-size:1.05rem;">{f["question"]}</h3><p style="color:var(--text-muted);">{f["answer"]}</p></div>' for f in self.config['faqs']])}</section>
         </main>{self.render_footer()}</body></html>"""
         with open(os.path.join(self.dist_dir, 'index.html'), 'w', encoding='utf-8') as f:
+            f.write(html)
+
+    def build_wiki(self):
+        hill_links = ", ".join([f'<a href="/units/{e["slug"]}" style="color: var(--accent);">{e["name"]}</a>' for e in self.entities if "hill" in e["type"].lower()])
+        ground_links = ", ".join([f'<a href="/units/{e["slug"]}" style="color: var(--accent);">{e["name"]}</a>' for e in self.entities if e["type"].lower() == "ground"])
+        support_links = ", ".join([f'<a href="/units/{e["slug"]}" style="color: var(--accent);">{e["name"]}</a>' for e in self.entities if "support" in e["type"].lower()])
+        hero_links = ", ".join([f'<a href="/units/{e["slug"]}" style="color: var(--accent);">{e["name"]}</a>' for e in self.entities if "hero" in e["type"].lower()])
+        wiki_faqs = [
+            {"question": "What does the RBXMeta Anime Crusaders X Wiki cover?", "answer": f"It serves as the central directory for all {len(self.entities)} tracked unit pages, Hero slot rules, trait and evolution mechanics, summon pity planning, game modes, and resource systems."},
+            {"question": "Does Eskanoor take up one of the 6 standard team slots?", "answer": "No. Eskanoor (The One) is a Hero unit that uses a separate Dedicated Hero Slot alongside your six standard deployment units."},
+            {"question": "How does trait inheritance work for Vegito (Vegeto) Fusion?", "answer": "Vegito inherits his level, stats, curse, and Trait from the specific unit you use to trigger the in-match fusion button—you do not need top traits on both Goko and Vejita."},
+            {"question": "Can Eskanoor roll standard banner traits like Crusader?", "answer": "No. Hero units use a separate Hero trait pool (Seven Sins, Sunspot, Shining, The One) rather than standard banner traits."},
+            {"question": "Where can I find unit rankings and active codes?", "answer": "Use our dedicated unit rankings page (/tier-list) for category rankings and the active codes page (/codes) for cross-source confirmed codes."},
+            {"question": "Why are some material counts or drop rates marked \"check in-game\"?", "answer": "RBXMeta never fabricates unverified game numbers. Values that vary by patch, rotation, or unconfirmed reports are marked \"check in-game\" until verified."}
+        ]
+        wiki_article_schema = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Anime Crusaders X Wiki & Game Directory",
+            "description": "Complete Anime Crusaders X Wiki directory: unit database, traits, evolutions, summoning pity, game modes, team mechanics, and farming guides.",
+            "image": [f"{self.config['site']['domain'].rstrip('/')}/assets/images/favicon-192x192.png"],
+            "datePublished": "2026-11-20",
+            "dateModified": "2026-11-20",
+            "mainEntityOfPage": {"@type": "WebPage", "@id": f"{self.config['site']['domain'].rstrip('/')}/wiki"},
+            "author": {"@type": "Organization", "name": "RBXMeta", "url": self.config['site']['domain'].rstrip('/')},
+            "publisher": {"@type": "Organization", "name": "RBXMeta", "logo": {"@type": "ImageObject", "url": f"{self.config['site']['domain'].rstrip('/')}/assets/images/favicon-192x192.png"}}
+        }
+        faq_html = "".join([f'<h3 style="color: var(--accent);">{f["question"]}</h3><p style="color: var(--text-muted);">{f["answer"]}</p>' for f in wiki_faqs])
+        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta("Anime Crusaders X Wiki | Units, Mechanics & Modes", "Complete Anime Crusaders X Wiki directory: unit database, traits, evolutions, summoning pity, game modes, team mechanics, and farming guides.", "/wiki")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Wiki", "/wiki")])}<script type="application/ld+json">{json.dumps(wiki_article_schema)}</script>{self.render_schema_faq(wiki_faqs)}</head><body>{self.render_nav("wiki")}
+        <main class="container main-layout">
+            <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <span>Wiki</span></nav>
+            <section class="hero">
+                <div class="badge-verified">ANIME CRUSADERS X WIKI • CENTRAL DIRECTORY</div>
+                <h1>Anime Crusaders X Wiki &amp; Game Directory</h1>
+                <p style="color: var(--text-muted);">Your central reference index for <strong>Anime Crusaders X</strong> on Roblox. Browse core game systems, placement rules, trait and evolution mechanics, game modes, and direct links to every unit page and utility tool.</p>
+                <div class="hero-stats">
+                    <div class="hero-stat-box"><div class="hero-stat-num">{len(self.entities)}</div><div class="hero-stat-label">Tracked Units</div></div>
+                    <div class="hero-stat-box"><div class="hero-stat-num">{len(self.guides)}</div><div class="hero-stat-label">In-Depth Guides</div></div>
+                    <div class="hero-stat-box"><div class="hero-stat-num">4</div><div class="hero-stat-label">Interactive Tools</div></div>
+                </div>
+            </section>
+            <article class="card">
+                <div class="card-header"><h2 id="overview" class="card-title">What Is Anime Crusaders X?</h2></div>
+                <p style="color: var(--text-main);"><strong>Anime Crusaders X</strong> (often abbreviated as <strong>ACX</strong>, developed by <strong>32x</strong>) is an anime-inspired Roblox tower defense game where players summon characters, roll traits and curses, evolve units, and clear escalating wave-based modes.</p>
+                <p style="color: var(--text-muted);">This page serves as the master mechanics directory and navigation hub. For live unit rankings, visit our <a href="/tier-list" style="color: var(--accent);">Anime Crusaders X Tier List</a>; for active lobby rewards, check the <a href="/codes" style="color: var(--accent);">working codes tracker</a>; for patch history, see <a href="/updates" style="color: var(--accent);">game updates</a>.</p>
+            </article>
+            <section class="card">
+                <div class="card-header"><h2 id="directory" class="card-title">Wiki Category Directory</h2></div>
+                <p style="color: var(--text-muted);">Jump directly to any core system in Anime Crusaders X or open the corresponding RBXMeta tool.</p>
+                <table class="data-table">
+                    <thead><tr><th>Category</th><th>Covered Systems &amp; Topics</th><th>RBXMeta Hub / Tool</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Units &amp; Heroes</strong></td><td>Hill / Hybrid, Ground, Support, Dedicated Hero Slot, Shiny Units</td><td><a href="/units/" style="color: var(--accent);">Units Database</a> • <a href="/best-units" style="color: var(--accent);">Featured Units</a></td></tr>
+                        <tr><td><strong>Progression &amp; Upgrades</strong></td><td>Evolutions, Fusion, Leveling &amp; Collection, Stat Potential</td><td><a href="#evolutions" style="color: var(--accent);">Evolution Mechanics</a> • <a href="/guides/" style="color: var(--accent);">All Guides</a></td></tr>
+                        <tr><td><strong>Combat Modifiers</strong></td><td>Traits, Hero Trait Pool, Curses, Relics, Combat Scaling</td><td><a href="#traits" style="color: var(--accent);">Traits &amp; Curses</a> • <a href="/calculator" style="color: var(--accent);">Trait Odds Calculator</a></td></tr>
+                        <tr><td><strong>Summoning &amp; Team Tools</strong></td><td>Banner Pity, Multi-Pull Math, 6-Slot + Hero Lineups</td><td><a href="/calculator" style="color: var(--accent);">Pity Calculator</a> • <a href="/team-builder" style="color: var(--accent);">Team Builder</a> • <a href="/unit-comparison" style="color: var(--accent);">Compare Units</a></td></tr>
+                        <tr><td><strong>Game Modes</strong></td><td>Story Worlds, Infinite, Legend Stages, Raids, Portals, Trials, Boss Rush, Challenges, Weekly Tower, Infinity Castle, Expedition, Tournaments</td><td><a href="#modes" style="color: var(--accent);">Mode Breakdown</a></td></tr>
+                        <tr><td><strong>Economy, Shops &amp; Extras</strong></td><td>Resource Farming, Shops, Quests, Bounties, Battlepass, Game Passes, Cooking, Unit Hunt, Events, Minigames, Trading, Cosmetics, Guilds</td><td><a href="#economy" style="color: var(--accent);">Economy &amp; Resources</a> • <a href="/codes" style="color: var(--accent);">Active Codes</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="units" class="card-title">Units &amp; Dedicated Hero Slot Database</h2><a href="/units/" style="color: var(--accent);">Browse Full Roster →</a></div>
+                <p style="color: var(--text-muted);">Every unit in Anime Crusaders X is assigned a placement type—<strong>Hill / Hybrid</strong>, <strong>Ground</strong>, or <strong>Support</strong>—while Hero units such as <a href="/units/eskanoor" style="color: var(--accent);">Eskanoor</a> deploy into a <strong>separate Dedicated Hero Slot</strong> without consuming one of your six standard deployment slots. For role-focused picks, see <a href="/best-dps" style="color: var(--accent);">DPS Units</a> and <a href="/best-support" style="color: var(--accent);">Support Units</a>.</p>
+                <table class="data-table">
+                    <thead><tr><th>Placement Group</th><th>Tracked Units (Direct Wiki Pages)</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Hill &amp; Hybrid</strong></td><td>{hill_links}</td></tr>
+                        <tr><td><strong>Ground</strong></td><td>{ground_links}</td></tr>
+                        <tr><td><strong>Support</strong></td><td>{support_links}</td></tr>
+                        <tr><td><strong>Dedicated Hero Slot</strong></td><td>{hero_links} — see <a href="/guides/how-to-get-eskanoor-the-one-anime-crusaders-x" style="color: var(--accent);">Eskanoor Unlock Guide</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="traits" class="card-title">Traits, Curses &amp; Stat Potential</h2></div>
+                <p style="color: var(--text-main);">Combat scaling in Anime Crusaders X relies on three modifier layers: <strong>Traits</strong> (rolled with Trait Remnants), <strong>Curses</strong> (rolled with Curse Tokens), and <strong>Stat Potential</strong> (rerolled with Stat Cubes), alongside equippable <strong>Relics</strong>.</p>
+                <p style="color: var(--text-muted);">Standard banner units roll from the 12-trait pool (topped by <em>Crusader</em>, <em>Biohazard</em>, <em>Radiant</em>, and <em>Aurora</em>), whereas Hero units like <a href="/units/eskanoor" style="color: var(--accent);">Eskanoor</a> use a separate Hero trait pool. For the full trait breakdown, read our <a href="/guides/anime-crusaders-x-trait-reroll-best-traits-tier-list" style="color: var(--accent);">Trait Reroll Guide</a> or simulate roll odds in the <a href="/calculator" style="color: var(--accent);">Trait Odds Calculator</a>. Exact Curse, Relic, and Stat Potential percentages vary by roll—always check in-game.</p>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="evolutions" class="card-title">Evolutions &amp; Fusion Mechanics</h2></div>
+                <p style="color: var(--text-main);">Most Mythical and Secret units unlock their full kits through lobby Evolution using elemental stones, event tokens, and Legend stage drops. Because recipe quantities can change across patches, always verify exact item counts in the in-game Evolution UI before farming.</p>
+                <p style="color: var(--text-muted);">Fusion units follow an in-match mechanic: for example, fusing <strong>Goko</strong> and max-upgraded <strong>Vejita</strong> triggers the <strong>Boo (Ultimate)</strong> boss encounter to unlock Vegito, inheriting level, stats, curse, and Trait from the initiating unit. See the <a href="/guides/anime-crusaders-x-einz-mely-evolution-guide" style="color: var(--accent);">Einz &amp; Mely Evolution Guide</a>, the <a href="/guides/anime-crusaders-x-vegeto-fusion-guide" style="color: var(--accent);">Vegeto Fusion Guide</a>, and our <a href="/calculator" style="color: var(--accent);">Evolution Material Planner</a>.</p>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="summoning" class="card-title">Summoning &amp; Pity System</h2></div>
+                <p style="color: var(--text-main);">Banners use separate pity counters for Mythic and Secret / Crusader pulls, meaning your Gem budget should be planned around one target banner at a time. Current featured banner rates and rotation timers should always be checked in-game at the Summon zone.</p>
+                <p style="color: var(--text-muted);">Before spending Gems, estimate remaining pulls with the <a href="/calculator" style="color: var(--accent);">Gem &amp; Pity Calculator</a> and claim free Gems and Trait Remnants from our <a href="/codes" style="color: var(--accent);">Active Codes</a> page (see the <a href="/guides/how-to-redeem-codes-anime-crusaders-x" style="color: var(--accent);">Code Redemption Guide</a> if you need lobby directions).</p>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="teams" class="card-title">Team Building &amp; Placement Synergy</h2></div>
+                <p style="color: var(--text-main);">A standard Anime Crusaders X lineup consists of <strong>six deployment slots</strong> plus <strong>one Dedicated Hero Slot</strong>. Balanced squads combine Hill / Hybrid coverage for elevated sightlines, Ground carries for lane control, and Support units for economy, buffs, or time/crowd control.</p>
+                <p style="color: var(--text-muted);">Test placement coverage in the <a href="/team-builder" style="color: var(--accent);">Team Builder</a>, compare recorded unit attributes side-by-side in <a href="/unit-comparison" style="color: var(--accent);">Unit Comparison</a>, or review placement fundamentals in the <a href="/guides/anime-crusaders-x-tier-list-placement-guide" style="color: var(--accent);">Placement Guide</a>.</p>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="modes" class="card-title">Game Modes &amp; Endgame Progression</h2></div>
+                <p style="color: var(--text-muted);">Anime Crusaders X splits progression across campaign chapters, boss encounters, and wave-scaling challenges. Unlock requirements and active rotation schedules should be checked in-game.</p>
+                <table class="data-table">
+                    <thead><tr><th>Mode</th><th>Primary Purpose</th><th>Unlock / Notes</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Story Worlds</strong></td><td>Core campaign chapters, early XP, Gems, and progression unlocks</td><td>Available from start; check chapter prerequisites in-game</td></tr>
+                        <tr><td><strong>Infinite Mode</strong></td><td>Endless wave scaling, leaderboard runs, and sustained farming</td><td>Relies heavily on Support crowd control and endgame DPS</td></tr>
+                        <tr><td><strong>Legend Stages</strong></td><td>Boss drops and evolution materials for Mythical &amp; Secret units</td><td>Check stage drop tables in-game</td></tr>
+                        <tr><td><strong>Raids &amp; Portals</strong></td><td>Targeted boss farming, event currencies, and secret unit drops</td><td>Portal tiers and raid timers: check in-game</td></tr>
+                        <tr><td><strong>Trials (e.g., The One)</strong></td><td>Preset or restricted challenge clears for exclusive rewards</td><td>Clear 150 Hard waves in The One trial to unlock <a href="/units/eskanoor" style="color: var(--accent);">Eskanoor</a></td></tr>
+                        <tr><td><strong>Challenges, Boss Rush &amp; Weekly Tower</strong></td><td>Recurring Trait Remnants, Cubes, and weekly milestone rewards</td><td>Modifier rotations reset periodically; check in-game</td></tr>
+                        <tr><td><strong>Infinity Castle, Expedition &amp; Tournaments</strong></td><td>Endgame multi-floor progression, passive expeditions, and competitive events</td><td>Seasonal rules and bracket rewards: check in-game</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="economy" class="card-title">Resources, Economy &amp; Shops</h2></div>
+                <p style="color: var(--text-muted);">Efficient progression depends on funneling farmable currencies into the right upgrade bottlenecks instead of rolling blindly. Shop stock, Battlepass tiers, Game Passes, Bounties, Cooking buffs, Unit Hunt targets, Guild perks, and Trading rules should be verified in-game.</p>
+                <table class="data-table">
+                    <thead><tr><th>Resource / System</th><th>Primary Use</th><th>Main Sources</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Gems</strong></td><td>Summoning on Standard and Banner pools</td><td>Story, Quests, Bounties, Battlepass, <a href="/codes" style="color: var(--accent);">Codes</a></td></tr>
+                        <tr><td><strong>Trait Remnants</strong></td><td>Rerolling unit Traits</td><td>Challenges, Events, Shops, <a href="/codes" style="color: var(--accent);">Codes</a></td></tr>
+                        <tr><td><strong>Stat Cubes &amp; Relic Cubes</strong></td><td>Rerolling Stat Potential and Relic modifiers</td><td>Challenges, Raids, Shops, <a href="/codes" style="color: var(--accent);">Codes</a></td></tr>
+                        <tr><td><strong>Curse Tokens</strong></td><td>Rolling unit Curses</td><td>Endgame stages, Events, <a href="/codes" style="color: var(--accent);">Codes</a></td></tr>
+                        <tr><td><strong>Elemental Stones &amp; Tokens</strong></td><td>Evolving Mythical and Secret units</td><td>Legend Stages, Raids, Portals (check in-game)</td></tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="faq" class="card-title">Frequently Asked Questions</h2></div>
+                <div>{faq_html}</div>
+            </section>
+            <section class="card">
+                <div class="card-header"><h2 id="changelog" class="card-title">Last Updated &amp; Editorial Verification</h2></div>
+                <p style="color: var(--text-muted);"><strong>Last updated: 2026-11-20</strong>. All linked unit profiles, code statuses, and calculator assumptions follow the standards documented in our <a href="/editorial-policy" style="color: var(--accent);">Editorial Policy</a> and <a href="/changelog" style="color: var(--accent);">Site Changelog</a>.</p>
+            </section>
+        </main>{self.render_footer()}</body></html>"""
+        with open(os.path.join(self.dist_dir, 'wiki.html'), 'w', encoding='utf-8') as f:
             f.write(html)
 
     def build_codes(self):
@@ -431,8 +559,24 @@ class WikiBuilder:
                     tbl += f'<tr><td><strong>{tk}</strong></td><td><a href="/units/{x["slug"]}" style="color:var(--accent);font-weight:700;">{x["name"]}</a></td><td>{x["rarity"]}</td><td>{x.get("role", "DPS")}</td><td>{x.get("gameMode", "Progressive & Infinite")}</td><td>{x.get("traits", "Damage / Range")}</td><td>{x["description"]}</td></tr>'
             panels += f'<section class="tier-category-panel" id="panel-{cid}" style="display:{disp};"><h2 style="font-size:1.4rem;margin-bottom:0.4rem;">{label} Tier List</h2><p style="color:var(--text-muted);margin-bottom:1.25rem;">{desc}</p>{trows}<table class="stats-table"><thead><tr><th>Tier</th><th>Unit</th><th>Rarity</th><th>Role</th><th>Best Mode</th><th>Traits</th><th>Meta Notes</th></tr></thead><tbody>{tbl}</tbody></table></section>'
 
-        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Tier List | Best Units Ranked", f"Searchable {self.config['site']['name']} (Anime Crusader X) unit tier list across Hill, Ground, Hybrid, Support & Hero Slot for Infinite and Story modes.", "/tier-list")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Tier List", "/tier-list")])}{self.render_schema_article(f"{self.config['site']['name']} Tier List", "Complete unit rankings across Hill, Ground, Hybrid, Support, and Hero Slot.", "/tier-list")}</head><body>{self.render_nav("tierlist")}
-        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Tier List</span></div><div class="card"><div class="badge-verified" style="margin-bottom:0.75rem;">✓ LAST UPDATED: {datetime.now().strftime('%Y-%m-%d')} • UNIFIED ROSTER DATA</div><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:0.5rem;">{self.config['site']['name']} Tier List</h1><p style="color:var(--text-muted);margin-bottom:1.25rem;">Filterable rankings across Hill/Hybrid, Ground, Support, and Dedicated Hero Slot (also known as Anime Crusader X Tier List). Powered by the same unified unit database.</p><input type="text" id="tl-search" class="search-input" placeholder="🔍 Search Goju, Gilgamesh, Eskanoor, Kurimi, Mely..." oninput="filterTierList()"><div class="tab-bar"><button class="tab-btn active" onclick="switchCategory('Hill_Hybrid')">Hill &amp; Hybrid</button><button class="tab-btn" onclick="switchCategory('Ground')">Ground</button><button class="tab-btn" onclick="switchCategory('Support')">Support</button><button class="tab-btn" onclick="switchCategory('Hero')">Hero Slot</button></div>{panels}{self.render_native_banner("tier-list")}<div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);"><h2 style="font-size:1.3rem;margin-bottom:0.85rem;">🎲 Gem &amp; Pity Calculator</h2>{self.render_pity_calculator()}</div></div></main>{self.render_footer()}<script>function switchCategory(c){{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes(c)));document.querySelectorAll('.tier-category-panel').forEach(p=>p.style.display=(p.id==='panel-'+c)?'block':'none');}}function filterTierList(){{const q=(document.getElementById('tl-search').value||'').toLowerCase();document.querySelectorAll('.tier-item-pill').forEach(el=>{{el.style.display=(!q||el.innerText.toLowerCase().includes(q))?'block':'none';}});document.querySelectorAll('.tier-category-panel table tbody tr').forEach(tr=>{{tr.style.display=(!q||tr.innerText.toLowerCase().includes(q))?'':'none';}});}}</script></body></html>"""
+        html = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{self.config['site']['name']} Tier List — Meta Unit Rankings", f"Searchable {self.config['site']['name']} (Anime Crusader X) unit tier list across Hill, Ground, Hybrid, Support & Hero Slot for Infinite and Story modes.", "/tier-list")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Tier List", "/tier-list")])}{self.render_schema_article(f"{self.config['site']['name']} Tier List", "Complete unit rankings across Hill, Ground, Hybrid, Support, and Hero Slot.", "/tier-list")}</head><body>{self.render_nav("tierlist")}
+        <main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <span>Tier List</span></div><div class="card"><div class="badge-verified" style="margin-bottom:0.75rem;">✓ LAST UPDATED: {datetime.now().strftime('%Y-%m-%d')} • UNIFIED ROSTER DATA</div><h1 style="font-size:2.2rem;font-weight:900;margin-bottom:0.5rem;">{self.config['site']['name']} Tier List</h1><p style="color:var(--text-muted);margin-bottom:1.25rem;">Filterable rankings across Hill/Hybrid, Ground, Support, and Dedicated Hero Slot (also known as Anime Crusader X Tier List). Powered by the same unified unit database.</p><input type="text" id="tl-search" class="search-input" placeholder="🔍 Search Goju, Gilgamesh, Eskanoor, Kurimi, Mely..." oninput="filterTierList()"><div class="tab-bar"><button class="tab-btn active" onclick="switchCategory('Hill_Hybrid')">Hill &amp; Hybrid</button><button class="tab-btn" onclick="switchCategory('Ground')">Ground</button><button class="tab-btn" onclick="switchCategory('Support')">Support</button><button class="tab-btn" onclick="switchCategory('Hero')">Hero Slot</button></div>{panels}{self.render_native_banner("tier-list")}
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+            <h2 style="font-size:1.3rem;margin-bottom:0.6rem;color:#38bdf8;">1. How We Rank Units (Tier Criteria)</h2>
+            <p style="color:var(--text-muted);margin-bottom:1.15rem;">Rankings reflect multi-source consensus across sustained DPS, wave-clear coverage, upgrade cost efficiency, trait dependency, and evolution scaling—not raw summon rarity alone. <strong>S+</strong> units define late-game clears, <strong>S</strong> units serve as reliable core carries or buffers, and <strong>A</strong> units excel in Story or mid-game progression.</p>
+            <h2 style="font-size:1.3rem;margin-bottom:0.6rem;color:#38bdf8;">2. Mode &amp; Placement Differences (Story, Infinite, Boss &amp; Hero Slot)</h2>
+            <p style="color:var(--text-muted);margin-bottom:1.15rem;"><strong>Hill &amp; Hybrid</strong> units cover elevated sightlines and multi-lane corners; <strong>Ground</strong> carries anchor early waves and lane choke points; <strong>Support</strong> units provide economy, buffs, and time/crowd control required past Wave 50 in Infinite; and <strong>Dedicated Hero Slot</strong> units like <a href="/units/eskanoor" style="color:var(--accent);">Eskanoor</a> deploy without consuming one of your six standard slots.</p>
+            <h2 style="font-size:1.3rem;margin-bottom:0.6rem;color:#38bdf8;">3. Top Synergy &amp; Team Core Notes</h2>
+            <p style="color:var(--text-muted);margin-bottom:1.15rem;">Pairing S+ carries such as <a href="/units/goju-vs-sukuno" style="color:var(--accent);">Goju vs Sukuno</a> or <a href="/units/mely-assault" style="color:var(--accent);">Mely (Assault)</a> with <a href="/units/kurimi" style="color:var(--accent);">Kurimi (Time Queen)</a> and <a href="/units/ai-idol" style="color:var(--accent);">AI (Idol)</a> significantly raises Infinite wave ceilings. Check your six-slot coverage in our <a href="/team-builder" style="color:var(--accent);">Team Builder</a>.</p>
+            <h2 style="font-size:1.3rem;margin-bottom:0.6rem;color:#38bdf8;">4. Tier List vs. Unit Comparison (When to Use Each)</h2>
+            <p style="color:var(--text-muted);margin-bottom:1.15rem;">Use this page to compare overall tier placement across categories, or browse <a href="/best-units" style="color:var(--accent);">Featured Units</a> for role lists. When deciding between two specific investments, use our <a href="/unit-comparison" style="color:var(--accent);">Unit Comparison</a> tool to inspect recorded DPS, SPA, range, and upgrade costs side by side.</p>
+            <h2 style="font-size:1.3rem;margin-bottom:0.6rem;color:#38bdf8;">5. Tier List Update Log</h2>
+            <ul style="margin-left:1.35rem;color:var(--text-muted);line-height:1.85;margin-bottom:1.25rem;">
+                <li><strong>2026-11-20:</strong> Expanded ranking criteria, placement/mode notes, and added direct links to the <a href="/wiki" style="color:var(--accent);">Anime Crusaders X Wiki</a> directory.</li>
+                <li><strong>2026-11-17:</strong> Separated Dedicated Hero Slot (<a href="/units/eskanoor" style="color:var(--accent);">Eskanoor</a>) from Hill/Hybrid and standardized <a href="/units/mely-assault" style="color:var(--accent);">Mely (Assault)</a> as Secret Ground.</li>
+            </ul>
+        </div>
+        <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);"><h2 style="font-size:1.3rem;margin-bottom:0.85rem;">🎲 Gem &amp; Pity Calculator</h2>{self.render_pity_calculator()}</div></div></main>{self.render_footer()}<script>function switchCategory(c){{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes(c)));document.querySelectorAll('.tier-category-panel').forEach(p=>p.style.display=(p.id==='panel-'+c)?'block':'none');}}function filterTierList(){{const q=(document.getElementById('tl-search').value||'').toLowerCase();document.querySelectorAll('.tier-item-pill').forEach(el=>{{el.style.display=(!q||el.innerText.toLowerCase().includes(q))?'block':'none';}});document.querySelectorAll('.tier-category-panel table tbody tr').forEach(tr=>{{tr.style.display=(!q||tr.innerText.toLowerCase().includes(q))?'':'none';}});}}</script></body></html>"""
         with open(os.path.join(self.dist_dir, 'tier-list.html'), 'w', encoding='utf-8') as f:
             f.write(html)
 
@@ -590,7 +734,8 @@ class WikiBuilder:
         with open(os.path.join(gdir, 'index.html'), 'w', encoding='utf-8') as f:
             f.write(idx)
         for g in self.guides:
-            gh = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(f"{g['title']} | {self.config['site']['name']}", g['excerpt'], f"/guides/{g['slug']}")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Guides", "/guides/"), (g['title'], f"/guides/{g['slug']}")])}{self.render_schema_article(g['title'], g['excerpt'], f"/guides/{g['slug']}", g['updatedDate'], schema_type="Article")}</head><body>{self.render_nav("guides")}<main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/guides/">Guides</a> <span>/</span> <span>{g['title']}</span></div><article class="card"><span class="badge-verified">{g['category']}</span><h1 style="font-size:2.15rem;font-weight:900;margin:0.75rem 0;">{g['title']}</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Updated: {g['updatedDate']}</p><div style="font-size:1.08rem;line-height:1.8;color:#e2e8f0;">{g['content'].replace('/database/', '/units/')}</div>{self.render_native_banner("guides")}</article></main>{self.render_footer()}</body></html>"""
+            g_meta_title = g['title'] if self.config['site']['name'] in g['title'] else f"{g['title']} | {self.config['site']['name']}"
+            gh = f"""<!DOCTYPE html><html lang="en"><head>{self.render_head_meta(g_meta_title, g['excerpt'], f"/guides/{g['slug']}")}{self.get_base_css()}{self.render_schema_breadcrumbs([("Home", "/"), ("Guides", "/guides/"), (g['title'], f"/guides/{g['slug']}")])}{self.render_schema_article(g['title'], g['excerpt'], f"/guides/{g['slug']}", g['updatedDate'], schema_type="Article")}</head><body>{self.render_nav("guides")}<main class="container main-layout"><div class="breadcrumbs"><a href="/">Home</a> <span>/</span> <a href="/guides/">Guides</a> <span>/</span> <span>{g['title']}</span></div><article class="card"><span class="badge-verified">{g['category']}</span><h1 style="font-size:2.15rem;font-weight:900;margin:0.75rem 0;">{g['title']}</h1><p style="color:var(--text-muted);margin-bottom:1.5rem;">Updated: {g['updatedDate']}</p><div style="font-size:1.08rem;line-height:1.8;color:#e2e8f0;">{g['content'].replace('/database/', '/units/')}</div>{self.render_native_banner("guides")}</article></main>{self.render_footer()}</body></html>"""
             with open(os.path.join(gdir, f"{g['slug']}.html"), 'w', encoding='utf-8') as f:
                 f.write(gh)
 
@@ -632,6 +777,7 @@ class WikiBuilder:
         today = datetime.now().strftime('%Y-%m-%d')
         urls = [
             ("/", today, "daily", "1.0"),
+            ("/wiki", "2026-11-20", "weekly", "0.9"),
             ("/tier-list", today, "daily", "0.95"),
             ("/units/", today, "weekly", "0.9"),
             ("/team-builder", today, "weekly", "0.9"),
@@ -648,6 +794,7 @@ class WikiBuilder:
             ("/changelog", today, "weekly", "0.6"),
         ]
         reds = [
+            "/wiki.html /wiki 301",
             "/codes.html /codes 301", "/es/codes.html /es/codes 301", "/pt/codes.html /pt/codes 301",
             "/tier-list.html /tier-list 301", "/es/tier-list.html /es/tier-list 301", "/pt/tier-list.html /pt/tier-list 301",
             "/calculator.html /calculator 301", "/team-builder.html /team-builder 301", "/unit-comparison.html /unit-comparison 301",
@@ -688,6 +835,7 @@ class WikiBuilder:
         if os.path.exists(ico_src):
             shutil.copy2(ico_src, os.path.join(self.dist_dir, 'favicon.ico'))
         self.build_index()
+        self.build_wiki()
         self.build_codes()
         self.build_tierlist()
         self.build_calculator()
